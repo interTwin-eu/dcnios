@@ -1,0 +1,39 @@
+nifi:
+  endpoint: https://<nifi-ip-public>
+  user: <nifi-user>
+  password: <nifi-password>
+  dcache:
+    - name: dcache
+      endpoint: <dcache-endpoint>
+      user: <dcache-user>
+      password: <dcache-password>
+      folder: <input-folder>
+      statefile: <file-that-save-state>
+      components:
+        - name: GetFile
+          seconds: 2
+          node: (ALL | PRIMARY)
+  oscar:
+    - name: invoke
+      endpoint: https://<oscar-endpoint>
+      service: <service-name>
+      #token: <token>
+      user: <oscar-user>
+      password: <oscar-password>
+      #components:
+      #  - name: InvokeOSCAR
+      #    seconds: 2
+  generic:
+    - name: <identifier>
+      file: <file-of-process-group>
+      variables:
+        key: value
+        key1: value1
+      components:
+        - name: InvokeOSCAR
+          seconds: 5
+  connection:
+    - from: dcache
+      to: invoke
+    - from: dcache
+      to: invoke2
