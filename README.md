@@ -25,7 +25,7 @@ Install all the requirements defined in `requirements.txt`
 pip install -r requeriments.txt
 ```
 
-Install the minimal requirements that dcnios needs
+Or only install the minimal requirements that dcnios needs.
 
 ``` bash
 pip install pyyaml==6.0 requests==2.28.2 oscar_python==1.0.3
