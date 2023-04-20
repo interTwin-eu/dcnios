@@ -56,5 +56,8 @@ python dcnios-cli.py delete -f description.yaml
 A command has been created to change the time of a process between execution:
 
 ``` bash
-python dcnios-cli.py changeSchedule --host=<nifi-endpoint> --user=<user> --password=<pass> --processGroup=invoke --component=InvokeOSCAR --seconds=10
+python dcnios-cli.py changeSchedule --host={nifi-endpoint} \
+--user={user} --password={pass}  \
+--processGroup={processGroupName} --component={defined_in_template} \
+--seconds=10
 ```
