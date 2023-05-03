@@ -1,4 +1,4 @@
-# Dcnios 
+# dCNiOs 
 # Copyright (C) 2023 - GRyCAP - Universitat Politecnica de Valencia
 #
 # This program is free software: you can redistribute it and/or modify
