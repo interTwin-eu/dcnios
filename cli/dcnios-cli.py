@@ -1,4 +1,4 @@
-# Dcnios 
+# dCNiOs 
 # Copyright (C) 2023 - GRyCAP - Universitat Politecnica de Valencia
 #
 # This program is free software: you can redistribute it and/or modify
@@ -84,7 +84,7 @@ elif args.option is not None  and args.f is not None:
                     command="simple-client.py --state /state/"+dcache["statefile"]+" --endpoint "+ \
                         dcache["endpoint"]+" --user "+dcache["user"]+" --password "+ \
                         dcache["password"]+" "+ dcache["folder"]
-                    nifi.changeVariable("dcache","command",command)
+                    nifi.changeVariable(dcache["name"],"command",command)
                     newProcessInfo(dcache["name"])
                     updateComponent(dcache)
 
@@ -93,7 +93,7 @@ elif args.option is not None  and args.f is not None:
                     nifi.create(oscar["name"],oscarfile)
                     nifi.changeVariable(oscar["name"],"endpoint", oscar["endpoint"])
                     nifi.changeVariable(oscar["name"],"service", oscar["service"])
-                    if oscar["user"] and oscar["password"]:
+                    if "user" in oscar and "password" in oscar:
                         client = Client("cluster-id",oscar["endpoint"], oscar["user"], oscar["password"], True)
                         service = client.get_service(oscar["service"])
                         token=service.json()["token"]

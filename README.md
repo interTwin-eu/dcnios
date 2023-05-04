@@ -15,9 +15,11 @@ Therefore, dCNiOS has been made to interact with NiFi and deploy a complete data
 All the dataflow information is described in a YAML file, and by executing the dCNiOS command-line interface, this dataflow is deployed on Nifi.
 
 From predefined recipes (ProcessGroup in Nifi, .json files) created before,
+
 dCNiOS inserts a general flow and changes the variables to create a concrete workflow.
 
 By default, two process group recipes have been created:
+
 
 1. dcache, which is an active listener for a dCache instance.  The [Server-sent Events SSE](https://en.wikipedia.org/wiki/Server-sent_events) client actively listens for these events in a user-defined folder in dCache. When a file is uploaded to that folder in dCache, NiFi will introduce the event in the dataflow.
 2. InvokeOSCAR, an HTTP call to invoke an OSCAR service asynchronously. OSCAR supports this events specification to let the user decide whether the file should be pre-staged into the execution sandbox to locally process the data within an OSCAR job or to delegate the processing of the event into an external tool, such as a workflow orchestration platform, thus reducing data movements across the systems.
@@ -38,6 +40,7 @@ pip install -r requeriments.txt
 ```
 
 Or only install the minimal requirements that dCNiOS needs.
+
 
 ``` bash
 pip install pyyaml==6.0 requests==2.28.2 oscar_python==1.0.3
