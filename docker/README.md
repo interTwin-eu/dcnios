@@ -1,6 +1,6 @@
 # New Image of Nifi
 
-It had created a Docker image called `ghcr.io/grycap/dcnios:latest` from apache/nifi version 1.20.0.
+It had created a Docker image called `ghcr.io/grycap/nifi-sse:latest` from apache/nifi version 1.20.0.
 Also, it created two folders /ssefiles and /state.
 
 1. The /ssefiles folder has introduced the files necessary to execute the [sse protocol](https://github.com/paulmillar/dcache-sse) defined in the paulmillar GitHub repository.
