@@ -10,7 +10,7 @@ Together, with [dCNiOS](http://github.com/grycap/dcnios) (dCache + NiFi + OSCAR)
 
 <img align="right" src="docs/images/dcnios-workflow.png" alt="dCNiOS Workflow" width="400"></left>
 
-Therefore, dCNiOS has been made to interact with NiFi and deploy a complete dataflow. It uses HTTP calls to communicate with a Nifi cluster, which can be automatically deployed by the [Infrastructure Manager (IM)](https://im.egi.eu). Apache NiFi is deployed on a dynamically provisioned Kubernetes cluster running with a custom Docker image named `ghcr.io/grycap/dcnios:latest`. This new image includes a client for the [dCache SSE Event Interface](https://www.dcache.org/manuals/UserGuide-8.2/frontend.shtml#storage-events), kindly provided by Paul Millar in [GitHub](https://github.com/paulmillar/dcache-sse).  It does not require a Nifi registry.
+Therefore, dCNiOS has been made to interact with NiFi and deploy a complete dataflow. It uses HTTP calls to communicate with a Nifi cluster, which can be automatically deployed by the [Infrastructure Manager (IM)](https://im.egi.eu). Apache NiFi is deployed on a dynamically provisioned Kubernetes cluster running with a custom Docker image named `ghcr.io/grycap/nifi-sse:latest`. This new image includes a client for the [dCache SSE Event Interface](https://www.dcache.org/manuals/UserGuide-8.2/frontend.shtml#storage-events), kindly provided by Paul Millar in [GitHub](https://github.com/paulmillar/dcache-sse).  It does not require a Nifi registry.
 
 All the dataflow information is described in a YAML file, and by executing the dCNiOS command-line interface, this dataflow is deployed on Nifi.
 
