@@ -47,7 +47,7 @@ Or only install the minimal requirements that dCNiOS needs.
 pip install pyyaml==6.0 requests==2.28.2 oscar_python==1.0.3
 ```
 
-## Acknowledgments
+## Acknowledgements
 
 This work was supported by the project “An interdisciplinary Digital Twin Engine for science’’ (interTwin) that has received funding from the European Union’s Horizon Europe Programme under Grant 101058386.
 
