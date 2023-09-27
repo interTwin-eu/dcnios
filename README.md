@@ -1,9 +1,5 @@
 # dCNiOS
 
-This work was supported by the project “An interdisciplinary Digital Twin Engine for science’’ (interTwin) that has received funding from the European Union’s Horizon Europe Programme under Grant 101058386. 
-
-![Inter-twin logo](docs/images/inter-twin.png)
-
 [dCache](http://dcache.org) is a system for storing and retrieving huge amounts of data, distributed among a large number of heterogeneous server nodes, under a single virtual filesystem tree with a variety of standard access methods.
 
 [Apache NiFi](http://nifi.apache.org) is a reliable system to process and distribute data through powerful and scalable directed graphs of data routing, transformation, and system mediation logic.
@@ -50,3 +46,9 @@ Or only install the minimal requirements that dCNiOS needs.
 ``` bash
 pip install pyyaml==6.0 requests==2.28.2 oscar_python==1.0.3
 ```
+
+## Acknowledgements
+
+This work was supported by the project “An interdisciplinary Digital Twin Engine for science’’ (interTwin) that has received funding from the European Union’s Horizon Europe Programme under Grant 101058386.
+
+<img  src="docs/images/inter-twin.png" alt="dCNiOS Workflow" width="600" style="display: block; margin: 0 auto">
