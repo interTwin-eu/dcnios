@@ -7,7 +7,7 @@
     "dateCreated": "2023-05-02",
     "datePublished": "2023-05-02",
     "dateModified": "2024-02-01",
-    "downloadUrl": "",
+    "downloadUrl": "https://github.com/interTwin-eu/dcnios",
     "issueTracker": "https://github.com/interTwin-eu/dcnios/issues",
     "name": "dCNiOS",
     "version": "1.0.0",
@@ -17,12 +17,8 @@
     "releaseNotes": "",
     "funding": "",
     "developmentStatus": "active",
-    "isPartOf": "",
     "referencePublication": "",
-    "funder": {
-        "@type": "",
-        "name": ""
-    },
+    
     "keywords": [
         "Workflow"
     ],
@@ -36,9 +32,7 @@
         "Linux",
         "macOS"
     ],
-    "relatedLink": [
-        ""
-    ],
+ 
     "author": [
         {
             "@type": "Person",
