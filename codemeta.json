@@ -15,7 +15,7 @@
     "description": "dCNiOS can manage the creation of event-driven data processing flows.The events are ingested in Apache NiFi, which can queue them up depending on the (modifiable at runtime) ingestion rate, to be then delegated for processing into a scalable OSCAR cluster, where a user-defined application based on a Docker image can process the data file.",
     "applicationCategory": "Computing",
     "releaseNotes": "",
-    "funding": "                                                                TIN2016-79951-R, PID2020-113126RB-I00, PDC2021-120844-I00, 101016577",
+    "funding": "",
     "developmentStatus": "active",
     "isPartOf": "",
     "referencePublication": "",
