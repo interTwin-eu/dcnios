@@ -12,7 +12,7 @@
     "name": "dCNiOS",
     "version": "1.0.0",
     "identifier": "",
-    "description": "dCNiOS can manage the creation of event-driven data processing flows.The events are ingested in Apache NiFi, which can queue them up depending on the (modifiable at runtime) ingestion rate, to be then delegated for processing into a scalable OSCAR cluster, where a user-defined application based on a Docker image can process the data file.",
+    "description": "dCNiOS can manage the creation of event-driven data processing flows. The events are ingested in Apache NiFi, which can queue them up depending on the (modifiable at runtime) ingestion rate, to be then delegated for processing into a scalable OSCAR cluster, where a user-defined application based on a Docker image can process the data file.",
     "applicationCategory": "Computing",
     "releaseNotes": "",
     "funding": "",
@@ -59,7 +59,7 @@
             "@type": "Person",
             "givenName": "Estibaliz",
             "familyName": "Parcero",
-            "email": "eparcero@i3m.upv.es",
+            "email": "esparig@i3m.upv.es",
             "affiliation": {
                 "@type": "Organization",
                 "name": "Instituto de Instrumentación para Imagen Molecular (I3M), Centro Mixto CSIC — Universitat Politècnica de València, Camino de Vera s/n, 46022 Valencia, España"
