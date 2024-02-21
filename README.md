@@ -81,6 +81,6 @@ This work was supported by the project “An interdisciplinary Digital Twin Engi
 
 <img  src="docs/images/inter-twin.png" alt="dCNiOS Workflow" width="200" >
 
-## More
+## More information
 
 You can find more [information](https://oscar.grycap.net/blog/data-driven-processing-with-dcache-nifi-oscar/ ) in the [OSCAR's blog.](https://oscar.grycap.net/blog/)
