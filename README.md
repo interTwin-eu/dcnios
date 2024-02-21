@@ -64,6 +64,13 @@ pip install pyyaml==6.0 requests==2.28.2 oscar_python==1.0.3
 Instituto de Instrumentación para Imagen Molecular (I3M), Centro Mixto CSIC — Universitat Politècnica de València, Camino de Vera s/n, 46022 Valencia, España
 
 
+## Versions and Maintenance
+
+There is only one version in maintenance:
+- The main branch in the source code repository maintains a working state version of the software component.
+- Documentation is updated with the current new software versions involving any substantial or minimal change in the behavior of the application.
+- Documentation is updated whenever reported as inaccurate or unclear.
+
 ## Licensing
 
 dCNiOS is licensed under the Apache License, Version 2.0. See LICENSE for the full license text.
@@ -73,3 +80,7 @@ dCNiOS is licensed under the Apache License, Version 2.0. See LICENSE for the fu
 This work was supported by the project “An interdisciplinary Digital Twin Engine for science’’ (interTwin), which has received funding from the European Union’s Horizon Europe Programme under Grant 101058386.
 
 <img  src="docs/images/inter-twin.png" alt="dCNiOS Workflow" width="200" >
+
+## Other
+
+You can find more [information](https://oscar.grycap.net/blog/data-driven-processing-with-dcache-nifi-oscar/ )in the [OSCAR's blog.](https://oscar.grycap.net/blog/)
