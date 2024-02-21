@@ -68,7 +68,7 @@ Instituto de Instrumentación para Imagen Molecular (I3M), Centro Mixto CSIC —
 
 There is only one version in maintenance:
 - The main branch in the source code repository maintains a working state version of the software component.
-- Documentation is updated with the current new software versions involving any substantial or minimal change in the behavior of the application.
+- Documentation is updated with the new software versions involving any substantial or minimal change in the application's behavior.
 - Documentation is updated whenever reported as inaccurate or unclear.
 
 ## Licensing
