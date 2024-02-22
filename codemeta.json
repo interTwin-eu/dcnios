@@ -57,9 +57,9 @@
         },
         {
             "@type": "Person",
-            "givenName": "Estibaliz",
+            "givenName": "Estíbaliz",
             "familyName": "Parcero",
-            "email": "eparcero@i3m.upv.es",
+            "email": "esparig@i3m.upv.es",
             "affiliation": {
                 "@type": "Organization",
                 "name": "Instituto de Instrumentación para Imagen Molecular (I3M), Centro Mixto CSIC — Universitat Politècnica de València, Camino de Vera s/n, 46022 Valencia, España"
