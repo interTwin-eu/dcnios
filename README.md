@@ -21,7 +21,7 @@ dCNiOS inserts a general flow and changes the variables to create a concrete wor
 By default, two process group recipes have been created:
 
 
-1. dcache, which is an active listener for a dCache instance.  The [Server-sent Events SSE](https://en.wikipedia.org/wiki/Server-sent_events) client actively listens for these events in a user-defined folder in dCache. When a file is uploaded to that folder in dCache, NiFi will introduce the event in the dataflow.
+1. dcache, which is an active listener for a dCache instance. The [Server-sent Events SSE](https://en.wikipedia.org/wiki/Server-sent_events) client actively listens for these events in a user-defined folder in dCache. When a file is uploaded to that folder in dCache, NiFi will introduce the event in the dataflow.
 2. InvokeOSCAR, an HTTP call to invoke an OSCAR service asynchronously. OSCAR supports this events specification to let the user decide whether the file should be pre-staged into the execution sandbox to locally process the data within an OSCAR job or to delegate the processing of the event into an external tool, such as a workflow orchestration platform, thus reducing data movements across the systems.
 
 
@@ -68,7 +68,7 @@ Instituto de Instrumentación para Imagen Molecular (I3M), Centro Mixto CSIC —
 
 There is only one version in maintenance:
 - The main branch in the source code repository maintains a working state version of the software component.
-- Documentation is updated with the new software versions involving any substantial or minimal change in the application's behavior.
+- Documentation is updated with the new software versions involving any substantial or minimal change in the application's behavior. Any issue can be reported in the [Issues section of the GitHub project](https://github.com/interTwin-eu/dcnios/issues)
 - Documentation is updated whenever reported as inaccurate or unclear.
 
 ## Licensing
