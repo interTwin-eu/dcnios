@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Generic
 
 The generic section is made to deploy your ProcessGroups.
