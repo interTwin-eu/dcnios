@@ -1,0 +1,23 @@
+{
+  "id": "ProcessGroup/OSCAR",
+  "title": "OSCAR",
+  "description": "The goal of this ProcessGroup is to invoke OSCAR services asynchronously:",
+  "source": "@site/docs/02.-ProcessGroup/OSCAR.md",
+  "sourceDirName": "02.-ProcessGroup",
+  "slug": "/ProcessGroup/OSCAR",
+  "permalink": "/dcnios/docs/ProcessGroup/OSCAR",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/02.-ProcessGroup/OSCAR.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Generic",
+    "permalink": "/dcnios/docs/ProcessGroup/generic"
+  }
+}
