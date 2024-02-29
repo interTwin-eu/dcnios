@@ -1,0 +1,53 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/dcnios/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/dcnios/docs",
+          "mainDocId": "Users",
+          "docs": [
+            {
+              "id": "intro",
+              "path": "/dcnios/docs/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "ProcessGroup/dcache",
+              "path": "/dcnios/docs/ProcessGroup/dcache",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "ProcessGroup/generic",
+              "path": "/dcnios/docs/ProcessGroup/generic",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "ProcessGroup/OSCAR",
+              "path": "/dcnios/docs/ProcessGroup/OSCAR",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "Users",
+              "path": "/dcnios/docs/Users",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/dcnios/docs/Users",
+                "label": "Users"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}
