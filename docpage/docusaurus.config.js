@@ -6,10 +6,13 @@
 
 import {themes as prismThemes} from 'prism-react-renderer';
 
+const toolName="DCNiOS"
+const ghrepo='https://github.com/interTwin-eu/dcnios'
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'DCNiOS are cool',
+  title: toolName,
+  tagline: toolName +' is cool',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -78,9 +81,9 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          //{to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: ghrepo,
             label: 'GitHub',
             position: 'right',
           },
@@ -89,19 +92,11 @@ const config = {
       footer: {
         style: 'dark',
         links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
+          
           {
             title: 'Community',
             items: [
-              {
+             /* {
                 label: 'Stack Overflow',
                 href: 'https://stackoverflow.com/questions/tagged/docusaurus',
               },
@@ -112,24 +107,24 @@ const config = {
               {
                 label: 'Twitter',
                 href: 'https://twitter.com/docusaurus',
-              },
+              },*/
             ],
           },
           {
             title: 'More',
             items: [
-              {
+              /*{
                 label: 'Blog',
                 to: '/blog',
-              },
+              },*/
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: ghrepo,
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        //copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
