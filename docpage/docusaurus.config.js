@@ -12,7 +12,7 @@ const ghrepo='https://github.com/interTwin-eu/dcnios'
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: toolName,
-  tagline: toolName +' is cool',
+  tagline: 'Data Connector through Apache NiFi for OSCAR',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -69,9 +69,9 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: toolName,
         logo: {
-          alt: 'My Site Logo',
+          alt: toolName+' Logo',
           src: 'img/logo.svg',
         },
         items: [
