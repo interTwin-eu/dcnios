@@ -3,6 +3,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import MainMarkdown from '@site/src/pages/markdown-page.md';
 
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
@@ -28,11 +29,10 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`Main Page`}>
       <HomepageHeader />
-      <main>
-        <HomepageFeatures />
+      <main  className="container" style={{marginTop:"100px", marginBottom: "100px"}} >
+        <MainMarkdown />
       </main>
     </Layout>
   );
