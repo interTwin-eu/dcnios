@@ -96,30 +96,34 @@ const config = {
           {
             title: 'Community',
             items: [
-             /* {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              {
+                label: 'License',
+                href: ghrepo+'/blob/main/LICENSE',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'Contributing',
+                href: ghrepo+'/blob/main/CONTRIBUTING.md',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },*/
+                label: 'Code of Conduct',
+                href: ghrepo+'/blob/main/CODE_OF_CONDUCT.md',
+              },
             ],
           },
           {
             title: 'More',
             items: [
-              /*{
-                label: 'Blog',
-                to: '/blog',
-              },*/
               {
                 label: 'GitHub',
                 href: ghrepo,
+              },
+              {
+                label: 'OSCAR',
+                href: "https://oscar.grycap.net/",
+              },
+              {
+                label: 'interTwin',
+                href: "https://www.intertwin.eu/",
               },
             ],
           },
