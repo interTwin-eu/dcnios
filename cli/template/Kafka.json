@@ -1,0 +1,507 @@
+{
+    "flowContents": {
+        "identifier": "d6db9e57-c6f7-3f22-89c8-500a9113d1d0",
+        "instanceIdentifier": "8bb068ef-a5fe-1674-0000-0000101002d6",
+        "name": "Kafka",
+        "comments": "",
+        "position": {
+            "x": -292.80182860376476,
+            "y": -279.00025521335857
+        },
+        "processGroups": [],
+        "remoteProcessGroups": [],
+        "processors": [
+            {
+                "identifier": "4c5bc270-3928-3b09-97f7-3b69e9bade54",
+                "instanceIdentifier": "e2f95b7f-0572-38b7-8613-37a44e5174b2",
+                "name": "ConsumeKafka_2_6",
+                "comments": "",
+                "position": {
+                    "x": -280.0,
+                    "y": 984.0
+                },
+                "type": "org.apache.nifi.processors.kafka.pubsub.ConsumeKafka_2_6",
+                "bundle": {
+                    "group": "org.apache.nifi",
+                    "artifact": "nifi-kafka-2-6-nar",
+                    "version": "1.20.0"
+                },
+                "properties": {
+                    "header-name-regex": null,
+                    "Commit Offsets": "true",
+                    "group.id": "${group_id}",
+                    "bootstrap.servers": "${bootstrap_servers}",
+                    "topic_type": "pattern",
+                    "sasl.kerberos.principal": null,
+                    "sasl.kerberos.service.name": null,
+                    "kerberos-credentials-service": null,
+                    "max-uncommit-offset-wait": "1 secs",
+                    "sasl.mechanism": "PLAIN",
+                    "honor-transactions": "true",
+                    "kerberos-user-service": null,
+                    "message-header-encoding": "UTF-8",
+                    "message-demarcator": null,
+                    "sasl.username": "",
+                    "max.poll.records": "10000",
+                    "aws.profile.name": null,
+                    "security.protocol": "SASL_SSL",
+                    "ssl.context.service": "3598a8e1-9ef0-3b7f-9c69-83466719eb43",
+                    "sasl.token.auth": "false",
+                    "sasl.kerberos.keytab": null,
+                    "Communications Timeout": "60 secs",
+                    "topic": "${topic}",
+                    "separate-by-key": "false",
+                    "key-attribute-encoding": "utf-8",
+                    "auto.offset.reset": "latest"
+                },
+                "propertyDescriptors": {
+                    "header-name-regex": {
+                        "name": "header-name-regex",
+                        "displayName": "Headers to Add as Attributes (Regex)",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Commit Offsets": {
+                        "name": "Commit Offsets",
+                        "displayName": "Commit Offsets",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "group.id": {
+                        "name": "group.id",
+                        "displayName": "Group ID",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "bootstrap.servers": {
+                        "name": "bootstrap.servers",
+                        "displayName": "Kafka Brokers",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "topic_type": {
+                        "name": "topic_type",
+                        "displayName": "Topic Name Format",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "sasl.kerberos.principal": {
+                        "name": "sasl.kerberos.principal",
+                        "displayName": "Kerberos Principal",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "sasl.kerberos.service.name": {
+                        "name": "sasl.kerberos.service.name",
+                        "displayName": "Kerberos Service Name",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "kerberos-credentials-service": {
+                        "name": "kerberos-credentials-service",
+                        "displayName": "Kerberos Credentials Service",
+                        "identifiesControllerService": true,
+                        "sensitive": false
+                    },
+                    "max-uncommit-offset-wait": {
+                        "name": "max-uncommit-offset-wait",
+                        "displayName": "Max Uncommitted Time",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "sasl.mechanism": {
+                        "name": "sasl.mechanism",
+                        "displayName": "SASL Mechanism",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "honor-transactions": {
+                        "name": "honor-transactions",
+                        "displayName": "Honor Transactions",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "kerberos-user-service": {
+                        "name": "kerberos-user-service",
+                        "displayName": "Kerberos User Service",
+                        "identifiesControllerService": true,
+                        "sensitive": false
+                    },
+                    "message-header-encoding": {
+                        "name": "message-header-encoding",
+                        "displayName": "Message Header Encoding",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "message-demarcator": {
+                        "name": "message-demarcator",
+                        "displayName": "Message Demarcator",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "sasl.username": {
+                        "name": "sasl.username",
+                        "displayName": "Username",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "max.poll.records": {
+                        "name": "max.poll.records",
+                        "displayName": "Max Poll Records",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "aws.profile.name": {
+                        "name": "aws.profile.name",
+                        "displayName": "AWS Profile Name",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "security.protocol": {
+                        "name": "security.protocol",
+                        "displayName": "Security Protocol",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "ssl.context.service": {
+                        "name": "ssl.context.service",
+                        "displayName": "SSL Context Service",
+                        "identifiesControllerService": true,
+                        "sensitive": false
+                    },
+                    "sasl.token.auth": {
+                        "name": "sasl.token.auth",
+                        "displayName": "Token Authentication",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "sasl.kerberos.keytab": {
+                        "name": "sasl.kerberos.keytab",
+                        "displayName": "Kerberos Keytab",
+                        "identifiesControllerService": false,
+                        "sensitive": false,
+                        "resourceDefinition": {
+                            "cardinality": "SINGLE",
+                            "resourceTypes": [
+                                "FILE"
+                            ]
+                        }
+                    },
+                    "Communications Timeout": {
+                        "name": "Communications Timeout",
+                        "displayName": "Communications Timeout",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "topic": {
+                        "name": "topic",
+                        "displayName": "Topic Name(s)",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "separate-by-key": {
+                        "name": "separate-by-key",
+                        "displayName": "Separate By Key",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "sasl.password": {
+                        "name": "sasl.password",
+                        "displayName": "Password",
+                        "identifiesControllerService": false,
+                        "sensitive": true
+                    },
+                    "key-attribute-encoding": {
+                        "name": "key-attribute-encoding",
+                        "displayName": "Key Attribute Encoding",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "auto.offset.reset": {
+                        "name": "auto.offset.reset",
+                        "displayName": "Offset Reset",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    }
+                },
+                "style": {},
+                "schedulingPeriod": "0 sec",
+                "schedulingStrategy": "TIMER_DRIVEN",
+                "executionNode": "ALL",
+                "penaltyDuration": "30 sec",
+                "yieldDuration": "1 sec",
+                "bulletinLevel": "WARN",
+                "runDurationMillis": 0,
+                "concurrentlySchedulableTaskCount": 1,
+                "autoTerminatedRelationships": [],
+                "scheduledState": "ENABLED",
+                "retryCount": 10,
+                "retriedRelationships": [],
+                "backoffMechanism": "PENALIZE_FLOWFILE",
+                "maxBackoffPeriod": "10 mins",
+                "componentType": "PROCESSOR",
+                "groupIdentifier": "d6db9e57-c6f7-3f22-89c8-500a9113d1d0"
+            },
+            {
+                "identifier": "2c6ce5f8-8b93-316f-aa37-64bdd6be5716",
+                "instanceIdentifier": "15fb5fb5-cd8b-394c-bb87-a5caaf0f4786",
+                "name": "Base64EncodeContent",
+                "comments": "",
+                "position": {
+                    "x": -288.0,
+                    "y": 1192.0
+                },
+                "type": "org.apache.nifi.processors.standard.Base64EncodeContent",
+                "bundle": {
+                    "group": "org.apache.nifi",
+                    "artifact": "nifi-standard-nar",
+                    "version": "1.20.0"
+                },
+                "properties": {
+                    "Mode": "Encode"
+                },
+                "propertyDescriptors": {
+                    "Mode": {
+                        "name": "Mode",
+                        "displayName": "Mode",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    }
+                },
+                "style": {},
+                "schedulingPeriod": "0 sec",
+                "schedulingStrategy": "TIMER_DRIVEN",
+                "executionNode": "ALL",
+                "penaltyDuration": "30 sec",
+                "yieldDuration": "1 sec",
+                "bulletinLevel": "WARN",
+                "runDurationMillis": 0,
+                "concurrentlySchedulableTaskCount": 1,
+                "autoTerminatedRelationships": [
+                    "failure"
+                ],
+                "scheduledState": "ENABLED",
+                "retryCount": 10,
+                "retriedRelationships": [],
+                "backoffMechanism": "PENALIZE_FLOWFILE",
+                "maxBackoffPeriod": "10 mins",
+                "componentType": "PROCESSOR",
+                "groupIdentifier": "d6db9e57-c6f7-3f22-89c8-500a9113d1d0"
+            }
+        ],
+        "inputPorts": [],
+        "outputPorts": [
+            {
+                "identifier": "860bd814-2d5b-3cc9-abfb-6d8e60eed975",
+                "instanceIdentifier": "8cb83eb7-b95a-3f5b-9d2e-bc837aee779c",
+                "name": "Output",
+                "position": {
+                    "x": -387.3546332690239,
+                    "y": 1514.6725787122195
+                },
+                "type": "OUTPUT_PORT",
+                "concurrentlySchedulableTaskCount": 1,
+                "scheduledState": "ENABLED",
+                "allowRemoteAccess": false,
+                "componentType": "OUTPUT_PORT",
+                "groupIdentifier": "d6db9e57-c6f7-3f22-89c8-500a9113d1d0"
+            }
+        ],
+        "connections": [
+            {
+                "identifier": "64446fab-214b-3f65-88e7-57749ac9d6dc",
+                "instanceIdentifier": "ac9dcac1-bf45-3f7b-ae50-c7b1e059db97",
+                "name": "",
+                "source": {
+                    "id": "4c5bc270-3928-3b09-97f7-3b69e9bade54",
+                    "type": "PROCESSOR",
+                    "groupId": "d6db9e57-c6f7-3f22-89c8-500a9113d1d0",
+                    "name": "ConsumeKafka_2_6",
+                    "comments": "",
+                    "instanceIdentifier": "e2f95b7f-0572-38b7-8613-37a44e5174b2"
+                },
+                "destination": {
+                    "id": "2c6ce5f8-8b93-316f-aa37-64bdd6be5716",
+                    "type": "PROCESSOR",
+                    "groupId": "d6db9e57-c6f7-3f22-89c8-500a9113d1d0",
+                    "name": "Base64EncodeContent",
+                    "comments": "",
+                    "instanceIdentifier": "15fb5fb5-cd8b-394c-bb87-a5caaf0f4786"
+                },
+                "labelIndex": 1,
+                "zIndex": 0,
+                "selectedRelationships": [
+                    "success"
+                ],
+                "backPressureObjectThreshold": 10000,
+                "backPressureDataSizeThreshold": "1 GB",
+                "flowFileExpiration": "0 sec",
+                "prioritizers": [],
+                "bends": [],
+                "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+                "partitioningAttribute": "",
+                "loadBalanceCompression": "DO_NOT_COMPRESS",
+                "componentType": "CONNECTION",
+                "groupIdentifier": "d6db9e57-c6f7-3f22-89c8-500a9113d1d0"
+            },
+            {
+                "identifier": "4944dff6-e57c-3ae6-9d74-0b1935c28aab",
+                "instanceIdentifier": "9ad932a7-546b-3fa0-a0fc-fdf7b3399bd9",
+                "name": "",
+                "source": {
+                    "id": "2c6ce5f8-8b93-316f-aa37-64bdd6be5716",
+                    "type": "PROCESSOR",
+                    "groupId": "d6db9e57-c6f7-3f22-89c8-500a9113d1d0",
+                    "name": "Base64EncodeContent",
+                    "comments": "",
+                    "instanceIdentifier": "15fb5fb5-cd8b-394c-bb87-a5caaf0f4786"
+                },
+                "destination": {
+                    "id": "860bd814-2d5b-3cc9-abfb-6d8e60eed975",
+                    "type": "OUTPUT_PORT",
+                    "groupId": "d6db9e57-c6f7-3f22-89c8-500a9113d1d0",
+                    "name": "Output",
+                    "instanceIdentifier": "8cb83eb7-b95a-3f5b-9d2e-bc837aee779c"
+                },
+                "labelIndex": 1,
+                "zIndex": 0,
+                "selectedRelationships": [
+                    "success"
+                ],
+                "backPressureObjectThreshold": 10000,
+                "backPressureDataSizeThreshold": "1 GB",
+                "flowFileExpiration": "0 sec",
+                "prioritizers": [],
+                "bends": [],
+                "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+                "partitioningAttribute": "",
+                "loadBalanceCompression": "DO_NOT_COMPRESS",
+                "componentType": "CONNECTION",
+                "groupIdentifier": "d6db9e57-c6f7-3f22-89c8-500a9113d1d0"
+            }
+        ],
+        "labels": [],
+        "funnels": [],
+        "controllerServices": [
+            {
+                "identifier": "3598a8e1-9ef0-3b7f-9c69-83466719eb43",
+                "instanceIdentifier": "8bb04183-a5fe-1674-0000-00004c347b53",
+                "name": "StandardRestrictedSSLContextService",
+                "comments": "",
+                "type": "org.apache.nifi.ssl.StandardRestrictedSSLContextService",
+                "bundle": {
+                    "group": "org.apache.nifi",
+                    "artifact": "nifi-ssl-context-service-nar",
+                    "version": "1.20.0"
+                },
+                "properties": {
+                    "Truststore Type": "",
+                    "SSL Protocol": "",
+                    "Keystore Type": null,
+                    "Truststore Filename": "",
+                    "Keystore Filename": null
+                },
+                "propertyDescriptors": {
+                    "Truststore Type": {
+                        "name": "Truststore Type",
+                        "displayName": "Truststore Type",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "SSL Protocol": {
+                        "name": "SSL Protocol",
+                        "displayName": "TLS Protocol",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Keystore Type": {
+                        "name": "Keystore Type",
+                        "displayName": "Keystore Type",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Truststore Filename": {
+                        "name": "Truststore Filename",
+                        "displayName": "Truststore Filename",
+                        "identifiesControllerService": false,
+                        "sensitive": false,
+                        "resourceDefinition": {
+                            "cardinality": "SINGLE",
+                            "resourceTypes": [
+                                "FILE"
+                            ]
+                        }
+                    },
+                    "Keystore Password": {
+                        "name": "Keystore Password",
+                        "displayName": "Keystore Password",
+                        "identifiesControllerService": false,
+                        "sensitive": true
+                    },
+                    "key-password": {
+                        "name": "key-password",
+                        "displayName": "Key Password",
+                        "identifiesControllerService": false,
+                        "sensitive": true
+                    },
+                    "Truststore Password": {
+                        "name": "Truststore Password",
+                        "displayName": "Truststore Password",
+                        "identifiesControllerService": false,
+                        "sensitive": true
+                    },
+                    "Keystore Filename": {
+                        "name": "Keystore Filename",
+                        "displayName": "Keystore Filename",
+                        "identifiesControllerService": false,
+                        "sensitive": false,
+                        "resourceDefinition": {
+                            "cardinality": "SINGLE",
+                            "resourceTypes": [
+                                "FILE"
+                            ]
+                        }
+                    }
+                },
+                "controllerServiceApis": [
+                    {
+                        "type": "org.apache.nifi.ssl.SSLContextService",
+                        "bundle": {
+                            "group": "org.apache.nifi",
+                            "artifact": "nifi-standard-services-api-nar",
+                            "version": "1.20.0"
+                        }
+                    },
+                    {
+                        "type": "org.apache.nifi.ssl.RestrictedSSLContextService",
+                        "bundle": {
+                            "group": "org.apache.nifi",
+                            "artifact": "nifi-standard-services-api-nar",
+                            "version": "1.20.0"
+                        }
+                    }
+                ],
+                "scheduledState": "DISABLED",
+                "bulletinLevel": "WARN",
+                "componentType": "CONTROLLER_SERVICE",
+                "groupIdentifier": "8bb068ef-a5fe-1674-0000-0000101002d6"
+            }
+        ],
+        "variables": {
+            "group_id": "",
+            "bootstrap_servers":"",
+            "topic":""
+        },
+        "defaultFlowFileExpiration": "0 sec",
+        "defaultBackPressureObjectThreshold": 10000,
+        "defaultBackPressureDataSizeThreshold": "1 GB",
+        "componentType": "PROCESS_GROUP",
+        "flowFileConcurrency": "UNBOUNDED",
+        "flowFileOutboundPolicy": "STREAM_WHEN_AVAILABLE"
+    },
+    "externalControllerServices": {},
+    "parameterContexts": {},
+    "flowEncodingVersion": "1.0",
+    "parameterProviders": {},
+    "latest": false
+}
