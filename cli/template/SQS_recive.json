@@ -1,0 +1,247 @@
+{
+    "flowContents": {
+        "identifier": "5ebf3a0d-1c2a-3de8-a82c-8432eda3fa6f",
+        "instanceIdentifier": "cdbdf443-018e-1000-ffff-ffff91c0f7c4",
+        "name": "SQS_recived",
+        "comments": "",
+        "position": {
+            "x": -520.0,
+            "y": 8.0
+        },
+        "processGroups": [],
+        "remoteProcessGroups": [],
+        "processors": [
+            {
+                "identifier": "3e72aaee-214f-35e2-a673-e165a24cbb16",
+                "instanceIdentifier": "bfa6a082-f997-3703-bfdd-3b4e22400b2c",
+                "name": "GetSQS",
+                "comments": "",
+                "position": {
+                    "x": 824.0,
+                    "y": 800.0
+                },
+                "type": "org.apache.nifi.processors.aws.sqs.GetSQS",
+                "bundle": {
+                    "group": "org.apache.nifi",
+                    "artifact": "nifi-aws-nar",
+                    "version": "1.20.0"
+                },
+                "properties": {
+                    "Proxy Host": null,
+                    "Auto Delete Messages": "true",
+                    "Endpoint Override URL": null,
+                    "Queue URL": "${queueurl}",
+                    "Receive Message Wait Time": "0 sec",
+                    "AWS Credentials Provider service": null,
+                    "Batch Size": "1",
+                    "Visibility Timeout": "15 mins",
+                    "Communications Timeout": "30 secs",
+                    "Credentials File": null,
+                    "Region": "us-east-1",
+                    "proxy-user-name": null,
+                    "Character Set": "UTF-8",
+                    "Proxy Host Port": null
+                },
+                "propertyDescriptors": {
+                    "Proxy Host": {
+                        "name": "Proxy Host",
+                        "displayName": "Proxy Host",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Auto Delete Messages": {
+                        "name": "Auto Delete Messages",
+                        "displayName": "Auto Delete Messages",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Access Key": {
+                        "name": "Access Key",
+                        "displayName": "Access Key ID",
+                        "identifiesControllerService": false,
+                        "sensitive": true
+                    },
+                    "Endpoint Override URL": {
+                        "name": "Endpoint Override URL",
+                        "displayName": "Endpoint Override URL",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Queue URL": {
+                        "name": "Queue URL",
+                        "displayName": "Queue URL",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Receive Message Wait Time": {
+                        "name": "Receive Message Wait Time",
+                        "displayName": "Receive Message Wait Time",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "AWS Credentials Provider service": {
+                        "name": "AWS Credentials Provider service",
+                        "displayName": "AWS Credentials Provider Service",
+                        "identifiesControllerService": true,
+                        "sensitive": false
+                    },
+                    "Batch Size": {
+                        "name": "Batch Size",
+                        "displayName": "Batch Size",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Visibility Timeout": {
+                        "name": "Visibility Timeout",
+                        "displayName": "Visibility Timeout",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "proxy-user-password": {
+                        "name": "proxy-user-password",
+                        "displayName": "Proxy Password",
+                        "identifiesControllerService": false,
+                        "sensitive": true
+                    },
+                    "Communications Timeout": {
+                        "name": "Communications Timeout",
+                        "displayName": "Communications Timeout",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Secret Key": {
+                        "name": "Secret Key",
+                        "displayName": "Secret Access Key",
+                        "identifiesControllerService": false,
+                        "sensitive": true
+                    },
+                    "Credentials File": {
+                        "name": "Credentials File",
+                        "displayName": "Credentials File",
+                        "identifiesControllerService": false,
+                        "sensitive": false,
+                        "resourceDefinition": {
+                            "cardinality": "SINGLE",
+                            "resourceTypes": [
+                                "FILE"
+                            ]
+                        }
+                    },
+                    "Region": {
+                        "name": "Region",
+                        "displayName": "Region",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "proxy-user-name": {
+                        "name": "proxy-user-name",
+                        "displayName": "Proxy Username",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Character Set": {
+                        "name": "Character Set",
+                        "displayName": "Character Set",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Proxy Host Port": {
+                        "name": "Proxy Host Port",
+                        "displayName": "Proxy Host Port",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    }
+                },
+                "style": {},
+                "schedulingPeriod": "0 sec",
+                "schedulingStrategy": "TIMER_DRIVEN",
+                "executionNode": "ALL",
+                "penaltyDuration": "30 sec",
+                "yieldDuration": "1 sec",
+                "bulletinLevel": "WARN",
+                "runDurationMillis": 0,
+                "concurrentlySchedulableTaskCount": 1,
+                "autoTerminatedRelationships": [],
+                "scheduledState": "ENABLED",
+                "retryCount": 10,
+                "retriedRelationships": [],
+                "backoffMechanism": "PENALIZE_FLOWFILE",
+                "maxBackoffPeriod": "10 mins",
+                "componentType": "PROCESSOR",
+                "groupIdentifier": "5ebf3a0d-1c2a-3de8-a82c-8432eda3fa6f"
+            }
+        ],
+        "inputPorts": [],
+        "outputPorts": [
+            {
+                "identifier": "3df42ffa-d3f4-3362-ae9e-ae21a408bf0a",
+                "instanceIdentifier": "cb634233-cc76-34d8-b79e-ed7eb6318da4",
+                "name": "output",
+                "position": {
+                    "x": 208.0,
+                    "y": 840.0
+                },
+                "type": "OUTPUT_PORT",
+                "concurrentlySchedulableTaskCount": 1,
+                "scheduledState": "ENABLED",
+                "allowRemoteAccess": false,
+                "componentType": "OUTPUT_PORT",
+                "groupIdentifier": "5ebf3a0d-1c2a-3de8-a82c-8432eda3fa6f"
+            }
+        ],
+        "connections": [
+            {
+                "identifier": "2d2c5a51-2f26-3c1d-9434-d1ffd2c2f1bb",
+                "instanceIdentifier": "2128dcd4-2975-326c-b852-d950e7eb592d",
+                "name": "",
+                "source": {
+                    "id": "3e72aaee-214f-35e2-a673-e165a24cbb16",
+                    "type": "PROCESSOR",
+                    "groupId": "5ebf3a0d-1c2a-3de8-a82c-8432eda3fa6f",
+                    "name": "GetSQS",
+                    "comments": "",
+                    "instanceIdentifier": "bfa6a082-f997-3703-bfdd-3b4e22400b2c"
+                },
+                "destination": {
+                    "id": "3df42ffa-d3f4-3362-ae9e-ae21a408bf0a",
+                    "type": "OUTPUT_PORT",
+                    "groupId": "5ebf3a0d-1c2a-3de8-a82c-8432eda3fa6f",
+                    "name": "output",
+                    "instanceIdentifier": "cb634233-cc76-34d8-b79e-ed7eb6318da4"
+                },
+                "labelIndex": 1,
+                "zIndex": 0,
+                "selectedRelationships": [
+                    "success"
+                ],
+                "backPressureObjectThreshold": 10000,
+                "backPressureDataSizeThreshold": "1 GB",
+                "flowFileExpiration": "0 sec",
+                "prioritizers": [],
+                "bends": [],
+                "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+                "partitioningAttribute": "",
+                "loadBalanceCompression": "DO_NOT_COMPRESS",
+                "componentType": "CONNECTION",
+                "groupIdentifier": "5ebf3a0d-1c2a-3de8-a82c-8432eda3fa6f"
+            }
+        ],
+        "labels": [],
+        "funnels": [],
+        "controllerServices": [],
+        "variables": {
+            "queueurl": "a"
+        },
+        "defaultFlowFileExpiration": "0 sec",
+        "defaultBackPressureObjectThreshold": 10000,
+        "defaultBackPressureDataSizeThreshold": "1 GB",
+        "componentType": "PROCESS_GROUP",
+        "flowFileConcurrency": "UNBOUNDED",
+        "flowFileOutboundPolicy": "STREAM_WHEN_AVAILABLE"
+    },
+    "externalControllerServices": {},
+    "parameterContexts": {},
+    "flowEncodingVersion": "1.0",
+    "parameterProviders": {},
+    "latest": false
+}

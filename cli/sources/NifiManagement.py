@@ -97,11 +97,11 @@ class Nifi:
         return None
 
 
-    def create(self,name,file):
+    def create(self,name,filecontent):
         groupid=self.getProcessGroup(name)
         if not groupid :
             fields = {"groupName": name, "positionX": "-150","positionY": "-150","clientId" : "aaa",
-                      "file": (file, open(file).read(), "application/json"),}
+                      "file": ("namefile", json.dumps(filecontent).encode('utf-8'), "application/json"),}
             body, header = encode_multipart_formdata(fields)
             response= self.callHttp(requests.post,"/nifi-api/process-groups/root/process-groups/upload",body,header)
 
@@ -156,3 +156,23 @@ class Nifi:
     def nifiVersion(self):
         response= self.callHttp(requests.get,"/nifi-api/system-diagnostics",'')
         return response.json()["systemDiagnostics"]["aggregateSnapshot"]["versionInfo"]["niFiVersion"]
+    
+    def enableSSL(self,name):
+        groupid=self.getProcessGroup(name)
+        response= self.callHttp(requests.get,"/nifi-api/flow/process-groups/"+groupid+"/controller-services",'')
+        for controller in response.json()["controllerServices"]:
+            if controller["parentGroupId"] == groupid:
+                ssl_context_id=controller["id"]
+                version=controller["revision"]["version"]
+                data='{"revision":{"clientId":"'+groupid+'","version":'+str(version)+'},"disconnectedNodeAcknowledged":false,"state":"ENABLED","uiOnly":true}'
+                response= self.callHttp(requests.put,"/nifi-api/controller-services/"+ ssl_context_id+"/run-status",data)
+
+    def disableSSL(self,name):
+        groupid=self.getProcessGroup(name)
+        response= self.callHttp(requests.get,"/nifi-api/flow/process-groups/"+groupid+"/controller-services",'')
+        for controller in response.json()["controllerServices"]:
+            if controller["parentGroupId"] == groupid:
+                ssl_context_id=controller["id"]
+                version=controller["revision"]["version"]
+                data='{"revision":{"clientId":"'+groupid+'","version":'+str(version)+'},"disconnectedNodeAcknowledged":false,"state":"DISABLED","uiOnly":true}'
+                response= self.callHttp(requests.put,"/nifi-api/controller-services/"+ ssl_context_id+"/run-status",data)
