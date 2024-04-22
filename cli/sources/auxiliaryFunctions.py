@@ -36,8 +36,14 @@ def prepareforAll(fileName):
 
  
 def kafkaPreparefile(filecontent,kafka):
-    filecontent=addSensibleVariable(filecontent,"ConsumeKafka_2_6","security.protocol",kafka["security_protocol"])
-    filecontent=addSensibleVariable(filecontent,"ConsumeKafka_2_6","sasl.mechanism",kafka["sasl_mechanism"])
+    if "security_protocol" not in kafka:
+        filecontent=addSensibleVariable(filecontent,"ConsumeKafka_2_6","security.protocol","SASL_SSL")
+    else:
+        filecontent=addSensibleVariable(filecontent,"ConsumeKafka_2_6","security.protocol",kafka["security_protocol"])
+    if "" not in kafka:
+        filecontent=addSensibleVariable(filecontent,"ConsumeKafka_2_6","sasl.mechanism","PLAIN")
+    else:
+        filecontent=addSensibleVariable(filecontent,"ConsumeKafka_2_6","sasl.mechanism",kafka["sasl_mechanism"])
     filecontent=addSensibleVariable(filecontent,"ConsumeKafka_2_6","sasl.username",kafka["sasl_username"])
     filecontent=addSensibleVariable(filecontent,"ConsumeKafka_2_6","sasl.password",kafka["sasl_password"])
     if "separate_by_key" in kafka and kafka["separate_by_key"] == "true" :

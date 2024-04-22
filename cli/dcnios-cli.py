@@ -153,6 +153,9 @@ elif args.option is not None  and args.f is not None:
                     kafkacontent=prepareforAll(kafkafile)
                     kafkacontent=kafkaPreparefile(kafkacontent,kafka)
                     #Set ssl context configuration
+                    kafka["ssl_context"]["SSL_Protocol"]="TLS"
+                    kafka["ssl_context"]["Truststore_Type"]="PKCS12"
+                    kafka["ssl_context"]["Truststore_Filename"]="/opt/nifi/nifi-current/data/"+kafka["ssl_context"]["Truststore_Filename"]
                     kafkacontent=ssl_context(kafkacontent,kafka["ssl_context"])
                     #Create object
                     nifi.create(kafka["name"],kafkacontent)
