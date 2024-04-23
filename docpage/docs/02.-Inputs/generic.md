@@ -1,9 +1,11 @@
+---
+sidebar_position: 1
+---
 # Generic
 
-The generic section is made to deploy your ProcessGroups.
-Need to be defined:
-- The identifier name
-- The path of your processGroup (.json file)
+Generic section creates a ProcessGroup by given a ProcessGroup file, is comprised of:
+- An identifier name of the process. It must be unique.
+- The path of your ProcessGroup (.json file)
 - The variables that compose the workflow (as a list).
 
 ```

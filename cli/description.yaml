@@ -24,8 +24,8 @@ nifi:
       #  - name: InvokeOSCAR
       #    seconds: 2
   Kafka:
-    - name: kafkaaa
-      bootstrap_servers: <ip>:9094
+    - name: kafka
+      bootstrap_servers: <ip>:<port>
       topic: <topic>
       group_id: "1"
       sasl_username: <sasl-user>

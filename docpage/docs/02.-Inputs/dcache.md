@@ -1,7 +1,9 @@
+---
+sidebar_position: 2
+---
 # dCache
-The main goal of this ProcessGroup is to get the events from dcache.
 
-It is necessary:
+dCache is the ProcessGroup that keep listen into dCache instance, is comprised of:
 - An identifier name of the process. It must be unique.
 - Endpoint, user and password
 - Folder where active listening
