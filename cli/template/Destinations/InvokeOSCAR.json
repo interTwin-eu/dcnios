@@ -383,7 +383,109 @@
         ],
         "labels": [],
         "funnels": [],
-        "controllerServices": [],
+        "controllerServices": [{
+            "identifier": "3598a8e1-9ef0-3b7f-9c69-83466719eb43",
+            "instanceIdentifier": "d5058dde-987d-3481-bd03-d5e1bf0dcea3",
+            "name": "StandardRestrictedSSLContextService",
+            "comments": "",
+            "type": "org.apache.nifi.ssl.StandardRestrictedSSLContextService",
+            "bundle": {
+                "group": "org.apache.nifi",
+                "artifact": "nifi-ssl-context-service-nar",
+                "version": "1.20.0"
+            },
+            "properties": {
+                "Truststore Type": "",
+                "SSL Protocol": "",
+                "Keystore Type": null,
+                "Truststore Filename": "",
+                "Keystore Filename": null
+            },
+            "propertyDescriptors": {
+                "Truststore Type": {
+                    "name": "Truststore Type",
+                    "displayName": "Truststore Type",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                },
+                "SSL Protocol": {
+                    "name": "SSL Protocol",
+                    "displayName": "TLS Protocol",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                },
+                "Keystore Type": {
+                    "name": "Keystore Type",
+                    "displayName": "Keystore Type",
+                    "identifiesControllerService": false,
+                    "sensitive": false
+                },
+                "Truststore Filename": {
+                    "name": "Truststore Filename",
+                    "displayName": "Truststore Filename",
+                    "identifiesControllerService": false,
+                    "sensitive": false,
+                    "resourceDefinition": {
+                        "cardinality": "SINGLE",
+                        "resourceTypes": [
+                            "FILE"
+                        ]
+                    }
+                },
+                "Keystore Password": {
+                    "name": "Keystore Password",
+                    "displayName": "Keystore Password",
+                    "identifiesControllerService": false,
+                    "sensitive": true
+                },
+                "key-password": {
+                    "name": "key-password",
+                    "displayName": "Key Password",
+                    "identifiesControllerService": false,
+                    "sensitive": true
+                },
+                "Truststore Password": {
+                    "name": "Truststore Password",
+                    "displayName": "Truststore Password",
+                    "identifiesControllerService": false,
+                    "sensitive": true
+                },
+                "Keystore Filename": {
+                    "name": "Keystore Filename",
+                    "displayName": "Keystore Filename",
+                    "identifiesControllerService": false,
+                    "sensitive": false,
+                    "resourceDefinition": {
+                        "cardinality": "SINGLE",
+                        "resourceTypes": [
+                            "FILE"
+                        ]
+                    }
+                }
+            },
+            "controllerServiceApis": [
+                {
+                    "type": "org.apache.nifi.ssl.SSLContextService",
+                    "bundle": {
+                        "group": "org.apache.nifi",
+                        "artifact": "nifi-standard-services-api-nar",
+                        "version": "1.20.0"
+                    }
+                },
+                {
+                    "type": "org.apache.nifi.ssl.RestrictedSSLContextService",
+                    "bundle": {
+                        "group": "org.apache.nifi",
+                        "artifact": "nifi-standard-services-api-nar",
+                        "version": "1.20.0"
+                    }
+                }
+            ],
+            "scheduledState": "DISABLED",
+            "bulletinLevel": "WARN",
+            "componentType": "CONTROLLER_SERVICE",
+            "groupIdentifier": "0d4c118b-55b4-3b4f-acbf-5ba1e91af113"
+        }],
         "variables": {
             "endpoint": "oscarEndpoint",
             "service": "serviceName",

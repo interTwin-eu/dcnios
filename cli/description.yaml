@@ -2,7 +2,7 @@ nifi:
   endpoint: https://<nifi-ip-public>
   user: <nifi-user>
   password: <nifi-password>
-  dcache:
+  dCache:
     - name: dcache
       endpoint: <dcache-endpoint>
       user: <dcache-user>
@@ -13,7 +13,7 @@ nifi:
         - name: GetFile
           seconds: 2
           node: (ALL | PRIMARY)
-  oscar:
+  OSCAR:
     - name: invoke
       endpoint: https://<oscar-endpoint>
       service: <service-name>
@@ -23,6 +23,28 @@ nifi:
       #components:
       #  - name: InvokeOSCAR
       #    seconds: 2
+  Kafka:
+    - name: kafka
+      bootstrap_servers: <ip>:<port>
+      topic: <topic>
+      group_id: "1"
+      sasl_username: <sasl-user>
+      sasl_password: <sasl-password>
+      #separate_by_key: "false"
+      #message_demarcator: ";"
+      ssl_context:
+        Truststore_Filename: <name-of-p12>
+        Truststore_Password: "<password-of-p12>"
+  SQS:
+    - name: SQS-events
+      AWS_DEFAULT_REGION: <region us-east-1 as example>
+      queue_name: <queue-name>
+  GetS3:
+    - name: S3_download
+      AWS_ACCESS_KEY_ID: <AK-numbers>
+      AWS_SECRET_ACCESS_KEY: <access-key>
+      AWS_DEFAULT_REGION: <region us-east-1 as example>
+      AWS_S3_BUCKET: <bucket-name>
   generic:
     - name: <identifier>
       file: <file-of-process-group>
