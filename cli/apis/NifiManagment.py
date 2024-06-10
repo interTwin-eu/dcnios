@@ -82,12 +82,10 @@ class Nifi:
             return None
         process_group = groupid
         response = self.callHttp(requests.get,
-                                 "/nifi-api/process-groups/root/connections",
-                                 '')
+                                 "/nifi-api/process-groups/root/connections", '')
         for connection in response.json()["connections"]:
             if connection["component"]["source"]["groupId"] == process_group \
-                    or connection["component"]["destination"]["groupId"] == \
-                    process_group:
+                    or connection["component"]["destination"]["groupId"] == process_group:
                 link = "/nifi-api/connections/" + connection["id"] \
                     + "?version=" + str(connection["revision"]["version"])
                 response = self.callHttp(requests.delete, link, '')
@@ -216,3 +214,21 @@ class Nifi:
                                          "/nifi-api/controller-services/"
                                          + ssl_context_id + "/run-status",
                                          data)
+                
+    def updateComponent(self, type):
+        if "components" in type:
+            print("Process group: "+type["name"])
+            for component in type["components"]:
+                print("\t- Process: " + component["name"])
+                if "seconds" in component:
+                    self.changeSchedule(type["name"], component["name"],
+                                        component["seconds"])
+                    print("\t  New schedule time: "
+                        + str(component["seconds"]) + " seconds")
+                if "node" in component:
+                    self.executionNode(type["name"],
+                                    component["name"], component["node"])
+                    print("\t  Now executing in node: " + component["node"])
+
+    def newProcessInfo(self, name):
+        print("New Process group: " + str(name))

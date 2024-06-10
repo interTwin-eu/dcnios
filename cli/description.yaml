@@ -2,7 +2,7 @@ nifi:
   endpoint: https://<nifi-ip-public>
   user: <nifi-user>
   password: <nifi-password>
-  dcache:
+  dCache:
     - name: dcache
       endpoint: <dcache-endpoint>
       user: <dcache-user>
@@ -13,7 +13,7 @@ nifi:
         - name: GetFile
           seconds: 2
           node: (ALL | PRIMARY)
-  oscar:
+  OSCAR:
     - name: invoke
       endpoint: https://<oscar-endpoint>
       service: <service-name>
@@ -39,7 +39,7 @@ nifi:
     - name: SQS-events
       AWS_DEFAULT_REGION: <region us-east-1 as example>
       queue_name: <queue-name>
-  S3:
+  GetS3:
     - name: S3_download
       AWS_ACCESS_KEY_ID: <AK-numbers>
       AWS_SECRET_ACCESS_KEY: <access-key>

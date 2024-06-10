@@ -18,12 +18,12 @@
 import json
 import os
 import boto3
-from sources.auxiliaryFunctions import addSensibleVariable
-
+from apis.auxiliaryFunctions import addSensibleVariable
+from apis import auxiliaryFunctions
+from apis import NifiManagment
 
 def getAWSCredentials(configuration):
-    if "AWS_ACCESS_KEY_ID" in os.environ \
-        and os.environ["AWS_ACCESS_KEY_ID"] != "" \
+    if "AWS_ACCESS_KEY_ID" in os.environ and os.environ["AWS_ACCESS_KEY_ID"] != "" \
         and "AWS_SECRET_ACCESS_KEY" in os.environ \
             and os.environ["AWS_SECRET_ACCESS_KEY"] != "":
         print("AWS Credentials: Credentials from environment")
@@ -42,7 +42,7 @@ def getAWSCredentials(configuration):
         print("AWS Credentials: Credentials from configuration file")
 
 
-def createSQS(configuration):
+def createSQSQueue(configuration):
     accountID = boto3.client('sts').get_caller_identity().get('Account')
     sqsClient = boto3.client('sqs',
                              region_name=configuration["AWS_DEFAULT_REGION"])
@@ -73,17 +73,19 @@ def createSQS(configuration):
     return sqsClient.get_queue_url(QueueName=configuration["queue_name"])
 
 
-def sqsPreparefile(filecontent, configuration):
-    filecontent = addSensibleVariable(filecontent, "GetSQS", "Access Key",
+
+
+def awsCredentialPreparefile(filecontent, configuration,processorName):
+    filecontent = addSensibleVariable(filecontent, processorName, "Access Key",
                                       configuration["AWS_ACCESS_KEY_ID"])
-    filecontent = addSensibleVariable(filecontent, "GetSQS", "Secret Key",
+    filecontent = addSensibleVariable(filecontent, processorName, "Secret Key",
                                       configuration["AWS_SECRET_ACCESS_KEY"])
-    filecontent = addSensibleVariable(filecontent, "GetSQS", "Region",
+    filecontent = addSensibleVariable(filecontent, processorName, "Region",
                                       configuration["AWS_DEFAULT_REGION"])
     return filecontent
 
 
-def deleteSQS(configuration):
+def deleteSQSQueue(configuration):
     sqsClient = boto3.client('sqs',
                              region_name=configuration["AWS_DEFAULT_REGION"])
     queue = sqsClient.get_queue_url(QueueName=configuration["queue_name"])
