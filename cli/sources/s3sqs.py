@@ -18,9 +18,8 @@
 import json
 import os
 import boto3
-from apis.auxiliaryFunctions import addSensibleVariable
 from apis import auxiliaryFunctions
-from apis import NifiManagment
+from apis import nifiManagment
 from apis import aws
 
 

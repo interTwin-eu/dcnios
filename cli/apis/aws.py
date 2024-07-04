@@ -18,9 +18,9 @@
 import json
 import os
 import boto3
-from apis.auxiliaryFunctions import addSensibleVariable
+from apis.auxiliaryFunctions import addSensitiveVariable
 from apis import auxiliaryFunctions
-from apis import NifiManagment
+from apis import nifiManagment
 
 def getAWSCredentials(configuration):
     if "AWS_ACCESS_KEY_ID" in os.environ and os.environ["AWS_ACCESS_KEY_ID"] != "" \
@@ -76,11 +76,11 @@ def createSQSQueue(configuration):
 
 
 def awsCredentialPreparefile(filecontent, configuration,processorName):
-    filecontent = addSensibleVariable(filecontent, processorName, "Access Key",
+    filecontent = addSensitiveVariable(filecontent, processorName, "Access Key",
                                       configuration["AWS_ACCESS_KEY_ID"])
-    filecontent = addSensibleVariable(filecontent, processorName, "Secret Key",
+    filecontent = addSensitiveVariable(filecontent, processorName, "Secret Key",
                                       configuration["AWS_SECRET_ACCESS_KEY"])
-    filecontent = addSensibleVariable(filecontent, processorName, "Region",
+    filecontent = addSensitiveVariable(filecontent, processorName, "Region",
                                       configuration["AWS_DEFAULT_REGION"])
     return filecontent
 

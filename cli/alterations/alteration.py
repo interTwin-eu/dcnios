@@ -15,31 +15,31 @@
 
 # !/usr/bin/env python3
 
-from apis import NifiManagment
+from apis import nifiManagment
 from apis import auxiliaryFunctions
 
 
 def createMerge(nifiConfiguration,information, name):
     nameCompose= nameActionReturn(information["action"],name)
-    merge=auxiliaryFunctions.prepareforAll("./template/Alterations/Merge.json",information)
-    merge = auxiliaryFunctions.addSensibleVariable(merge, "MergeContent", "Maximum Number of Entries", information["maxMessages"])
+    merge=auxiliaryFunctions.prepareforAll("./template/alterations/Merge.json",information)
+    merge = auxiliaryFunctions.addSensitiveVariable(merge, "MergeContent", "Maximum Number of Entries", information["maxMessages"])
     nifiConfiguration.create(nameCompose, merge)
     nifiConfiguration.changeSchedule(nameCompose, "MergeContent", information["windowSeconds"])
 
 
 def createDecode(nifiConfiguration,information,name):
     nameCompose= nameActionReturn(information["action"],name)
-    merge=auxiliaryFunctions.prepareforAll("./template/Alterations/Encode_Decode.json",information)
-    merge = auxiliaryFunctions.addSensibleVariable(merge, "EncodeContent", "Mode", "Decode")
+    merge=auxiliaryFunctions.prepareforAll("./template/alterations/Encode_Decode.json",information)
+    merge = auxiliaryFunctions.addSensitiveVariable(merge, "EncodeContent", "Mode", "Decode")
     if "Encoding" in information:
-        merge = auxiliaryFunctions.addSensibleVariable(merge, "EncodeContent", "Encoding", information["Encoding"])
+        merge = auxiliaryFunctions.addSensitiveVariable(merge, "EncodeContent", "Encoding", information["Encoding"])
     nifiConfiguration.create(nameCompose, merge)
 
 def createEncode(nifiConfiguration,information,name):
     nameCompose= nameActionReturn(information["action"],name)
-    merge=auxiliaryFunctions.prepareforAll("./template/Alterations/Encode_Decode.json",information)
+    merge=auxiliaryFunctions.prepareforAll("./template/alterations/Encode_Decode.json",information)
     if "Encoding" in information:
-        merge = auxiliaryFunctions.addSensibleVariable(merge, "EncodeContent", "Encoding", information["Encoding"])
+        merge = auxiliaryFunctions.addSensitiveVariable(merge, "EncodeContent", "Encoding", information["Encoding"])
     nifiConfiguration.create(nameCompose, merge)
 
 
@@ -53,10 +53,10 @@ def createAlteration(nifiConfiguration,allInformation):
             createEncode(nifiConfiguration,alter,name)
         elif alter["action"]=="Decode":
             createDecode(nifiConfiguration,alter,name)
-    conectAlteration(nifiConfiguration,allInformation)
+    connectAlteration(nifiConfiguration,allInformation)
 
 
-def conectAlteration(nifiConfiguration,allInformation):
+def connectAlteration(nifiConfiguration,allInformation):
     name=allInformation["name"]
     for index,step in enumerate(allInformation["alterations"]):
         if index == 0:

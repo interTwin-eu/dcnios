@@ -16,7 +16,7 @@
 # !/usr/bin/env python3
 
 from apis import auxiliaryFunctions
-from apis import NifiManagment
+from apis import nifiManagment
 
 def createKafka(nifiConfiguration,kafkaInfo,kafkacontent):
     # Prepare config
@@ -45,32 +45,32 @@ def createKafka(nifiConfiguration,kafkaInfo,kafkacontent):
 
 def kafkaPreparefile(filecontent, kafka):
     if "security_protocol" not in kafka:
-        filecontent = auxiliaryFunctions.addSensibleVariable(filecontent, "ConsumeKafka_2_6",
+        filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                           "security.protocol", "SASL_SSL")
     else:
-        filecontent = auxiliaryFunctions.addSensibleVariable(filecontent, "ConsumeKafka_2_6",
+        filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                           "security.protocol",
                                           kafka["security_protocol"])
     if "" not in kafka:
-        filecontent = auxiliaryFunctions.addSensibleVariable(filecontent, "ConsumeKafka_2_6",
+        filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                           "sasl.mechanism", "PLAIN")
     else:
-        filecontent = auxiliaryFunctions.addSensibleVariable(filecontent, "ConsumeKafka_2_6",
+        filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                           "sasl.mechanism",
                                           kafka["sasl_mechanism"])
-    filecontent = auxiliaryFunctions.addSensibleVariable(filecontent, "ConsumeKafka_2_6",
+    filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                       "sasl.username",
                                       kafka["sasl_username"])
-    filecontent = auxiliaryFunctions.addSensibleVariable(filecontent, "ConsumeKafka_2_6",
+    filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                       "sasl.password",
                                       kafka["sasl_password"])
     if "separate_by_key" in kafka and kafka["separate_by_key"] == "true":
-        filecontent = auxiliaryFunctions.addSensibleVariable(filecontent, "ConsumeKafka_2_6",
+        filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                           "separate-by-key", "true")
-        filecontent = auxiliaryFunctions.addSensibleVariable(filecontent, "ConsumeKafka_2_6",
+        filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                           "message-demarcator",
                                           kafka["message_demarcator"])
     else:
-        filecontent = auxiliaryFunctions.addSensibleVariable(filecontent, "ConsumeKafka_2_6",
+        filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                           "separate-by-key", "false")
     return filecontent

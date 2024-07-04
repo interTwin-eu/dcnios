@@ -16,7 +16,7 @@
 # !/usr/bin/env python3
 
 from apis import auxiliaryFunctions
-from apis import NifiManagment
+from apis import nifiManagment
 from oscar_python.client import Client
 
 
