@@ -7,7 +7,7 @@ DCNiOS is an open-source command-line tool to easily manage the creation of even
 
 [OSCAR](https://oscar.grycap.net) is an open-source platform for serverless event-driven data processing of containerized applications across the computing continuum.
 
-Together with [DCNiOS](http://github.com/grycap/dcnios) (Data Connector + NiFi + OSCAR), you can manage the creation of event-driven data processing flows. As shown in the figure, when an event occurs in the external component, dCache in this case, events are ingested in Apache NiFi, which can queue them up depending on the (modifiable at runtime) ingestion rate, to be then delegated for processing into a scalable OSCAR cluster, where a user-defined application based on a Docker image can process the data file.
+Together with [DCNiOS](http://github.com/grycap/dcnios) ( NiFi + OSCAR), you can manage the creation of event-driven data processing flows. As shown in the figure, when an event occurs in the external component, dCache in this case, events are ingested in Apache NiFi, which can queue them up depending on the (modifiable at runtime) ingestion rate, to be then delegated for processing into a scalable OSCAR cluster, where a user-defined application based on a Docker image can process the data file.
 
 <img align="right" src="docpage/docs/images/dcnios-workflow.png" alt="DCNiOS Workflow" width="400"></left>
 
