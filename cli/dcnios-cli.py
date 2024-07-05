@@ -16,16 +16,13 @@
 import yaml
 from yaml.loader import SafeLoader
 import json
-#from oscar_python.client import Client
 from apis.auxiliaryFunctions import *
-from apis.NifiManagment import *
+from apis.nifiManagment import *
 from apis.aws import *
 from sources.dcache import *
-from destinations.OSCAR import *
-from sources.Kafka import *
+from destinations.oscar import *
+from sources.kafka import *
 from sources.generic import *
-#import boto3
-#import os
 import env
 import argparse
 

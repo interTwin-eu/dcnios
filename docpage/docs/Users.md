@@ -67,8 +67,9 @@ Destinations:
 - [OSCAR](https://oscar.grycap.net/)
 
 Alterations:
-- Base64
 - Merge
+- Encoded
+- Decoded
 
 
 #### Components Subsection

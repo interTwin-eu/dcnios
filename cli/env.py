@@ -16,18 +16,18 @@
 
 from sources.dcache import createDcache
 from sources.s3sqs import createGetS3,createGetSQS
-from sources.Kafka import createKafka
+from sources.kafka import createKafka
 from sources.generic import createGeneric
-from destinations.OSCAR import createOSCAR
+from destinations.oscar import createOSCAR
 from destinations.s3sqs import createPutS3
 
-folderSource = "template/Sources/"
+folderSource = "template/sources/"
 
 kafkafile = folderSource+"Kafka.json"
 dcachefile = folderSource+"dcache.json"
 sqsfile = folderSource+"SQS_recive.json"
 
-folderDestination = "template/Destinations/"
+folderDestination = "template/destinations/"
 putS3file= folderDestination+ "PutS3.json"
 oscarfile = folderDestination+"InvokeOSCAR.json"
 

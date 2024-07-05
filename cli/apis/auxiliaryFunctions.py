@@ -20,7 +20,7 @@ import os
 from alterations import alteration
 
 
-def addSensibleVariable(file, processorName, key, value):
+def addSensitiveVariable(file, processorName, key, value):
     for processor in file["flowContents"]["processors"]:
         if processor["name"] == processorName:
             processor["properties"][key] = value

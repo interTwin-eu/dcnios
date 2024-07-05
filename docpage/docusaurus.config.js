@@ -15,7 +15,7 @@ const config = {
   tagline: 'Data Connector through Apache NiFi for OSCAR',
   favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
+  // Set the production url of your site here #3f3f9f
   url: 'https://intertwin-eu.github.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
@@ -72,7 +72,7 @@ const config = {
         title: toolName,
         logo: {
           alt: toolName+' Logo',
-          src: 'img/logo.svg',
+          src: 'img/dcnios-logo.png',
         },
         items: [
           {
