@@ -23,7 +23,7 @@ In DCNiOS documentation, the Process Groups are split by purpose into three main
 ## Prerequisites
 
 - OSCAR cluster containing the user-defined OSCAR Services. You can see some [examples](https://github.com/grycap/oscar/tree/master/examples) in GitHub.
-- Apache Nifi cluster deployed.
+- Apache NiFi cluster deployed.
 - A Python distribution such as [Anaconda](https://www.anaconda.com/) or Python version 3.7.6
 - An input source (one of these is enough: dCache, Kafka, S3 AWS, SQS AWS)
 
