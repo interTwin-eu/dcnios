@@ -55,9 +55,9 @@ jobs:
           path: ./docpage/build
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: JamesIves/github-pages-deploy-action@4.1.0
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: main
           folder: docpage/build
-          repository: esparig/dcnios-docs
+          repository-name: esparig/dcnios-docs
           token: ${{ secrets.GITHUB_TOKEN }}
