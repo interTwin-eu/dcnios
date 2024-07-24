@@ -58,6 +58,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: main
-          folder: docpage/build
+          folder: ./docpage/build
           repository-name: esparig/dcnios-docs
           token: ${{ secrets.GITHUB_TOKEN }}
