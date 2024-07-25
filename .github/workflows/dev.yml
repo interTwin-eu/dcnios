@@ -53,13 +53,11 @@ jobs:
         with:
           # Upload entire repository
           path: ./docpage/build
-      - name: Move build directory to root
-        run: mv ./docpage/build build
+
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: main
-          folder: build/dcnios
+          branch: dev-esparig
+          folder: build
           repository-name: esparig/dcnios-docs
           token: ${{ secrets.GITHUB_TOKEN }}
