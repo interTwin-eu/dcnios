@@ -19,7 +19,7 @@ from sources.s3sqs import createGetS3,createGetSQS
 from sources.kafka import createKafka
 from sources.generic import createGeneric
 from destinations.oscar import createOSCAR
-from destinations.s3sqs import createPutS3
+from destinations.s3aws import createPutS3
 
 folderSource = "template/sources/"
 
