@@ -35,6 +35,14 @@ nifi:
       ssl_context:
         Truststore_Filename: <name-of-p12>
         Truststore_Password: "<password-of-p12>"
+      alterations:
+        - action: Encode
+          Encoding: base64
+        - action: Decode
+          Encoding: base64
+        - action: Merge
+          maxMessages: 10
+          windowSeconds: 7
   SQS:
     - name: SQS-events
       AWS_DEFAULT_REGION: <region us-east-1 as example>
@@ -57,5 +65,5 @@ nifi:
   connection:
     - from: dcache
       to: invoke
-    - from: dcache
-      to: invoke2
+    - from: kafka
+      to: invoke
