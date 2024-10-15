@@ -1,9 +1,10 @@
-# New Image of Nifi
+# Regarding the Docker image
 
-It had created a Docker image called `ghcr.io/grycap/nifi-sse:latest` from apache/nifi version 1.20.0.
-Also, it created two folders /ssefiles and /state.
+A Docker image called `ghcr.io/grycap/nifi-sse:latest` has been created from Apache NiFi version 1.20.0.
 
-1. The /ssefiles folder has introduced the files necessary to execute the [sse protocol](https://github.com/paulmillar/dcache-sse) defined in the paulmillar GitHub repository.
-2. The other folder /state will be a persistent folder that will save all the events and the state.
+The image contains two folders called *ssefiles* and *state*.
 
-Finally, all the dependencies necessary to execute the sse protocol have been added.
+1. The *ssefiles* folder contains the necessary files to execute the [dCache SSE protocol](https://github.com/paulmillar/dcache-sse) as defined in the paulmillar GitHub repository.
+2. The *state* folder purpose is to be employed as a persistent storage for the events and the state.
+
+The image also contains preinstalled the required dependencies to execute the SSE protocol.
