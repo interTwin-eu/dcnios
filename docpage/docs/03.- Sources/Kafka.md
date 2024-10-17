@@ -10,9 +10,9 @@ The Kafka Source allows us to consume a Kafka topic. It requires this informatio
 - The topic name that is going to be consumed. Required.
 - The group identifier indicates the consumer group. Required.
 - [IM](https://www.grycap.upv.es/im/index.php) serve a recipe that supports the SASL_SSL security protocol. So, the user `sasl_username` and password `sasl_password` must be set. These parameters are set at Kafka deployment time. Required.
-- If the topic consuming follows a `key:value` pattern, set the argument `separate_by_key` true and select the demarcator with `message_demarcator`.
+- If the consumed topic follows a `key:value` pattern, set the argument `separate_by_key` true and select the demarcator with `message_demarcator`.
 
-Also, an SSL connection between NiFi and Kafka is necessary. A PKCS12 certificate and the certificate's password make this connection.
+An SSL connection between NiFi and Kafka is necessary. A PKCS12 certificate and the certificate's password must be provided.
 
 ```
   Kafka:

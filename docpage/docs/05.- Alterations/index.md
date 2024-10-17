@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Alterations
 
-The subsection `alterations`, is located inside a Source element and changes the input data format. These alterations are applied as a descendent definition. These steps are helpful to be okay with the input Sources format and to re-use the Sources with no changes.
+The `alterations` subsection, is located inside a Source element and changes the input data format. These alterations are applied as a descendent definition. These steps are helpful to be okay with the input Sources format and to re-use the Sources with no changes.
 
 
 

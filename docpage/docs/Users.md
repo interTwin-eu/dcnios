@@ -78,12 +78,12 @@ Alterations:
 
 #### Components Subsection
 
-The subsection `components`, inside Sources and Destinations, changes the configuration of a single Processor of Apache NiFi. It is necessary to know the name of the component. The subsection `components` can change the seconds between executions (ratio execution) and select which kind of node execution (PRIMARY or ALL).
+The components subsection changes the behavior of an inter-process. When you deploy an element, there are some processes running in the background. You can change the seconds between executions (execution ratio) and select which node will perform the execution (PRIMARY or ALL). However, it is necessary to know the name of the process. For example, the destination OSCAR has the component InvokeOSCAR, which sends an HTTP call.
 
 
 ```
 components:
-- name: GetFile
+- name: InvokeOSCAR
   seconds: 2
   node: (ALL | PRIMARY)
 ```
@@ -91,7 +91,8 @@ components:
 
 #### Alterations
 
-The subsection [Alterations](/docs/Alterations), is located inside [Sources](/docs/Sources), and it changes the data format. These alterations are applied as a descendent definition. In this example, the input data is merged into one message. Then, the merge message is encoded in base64 format.
+[Alterations](/docs/Alterations), located inside [Sources](/docs/Sources), are employed to modify the format of data. The alterations are applied in the specified order. In the following example, the input data is merged into one message. Then, the merged message is encoded in base64 format.
+
 
 ```
   - action: Merge
