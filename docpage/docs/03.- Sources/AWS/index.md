@@ -21,6 +21,6 @@ DCNiOS can use some AWS as input. A valid pair of AWS Access Key and AWS Secret 
 
 
 AWS_DEFAULT_REGION is mandatory for any that uses AWS in the configuration file. These ProcessGroups use AWS credentials:
-- [SQS](/docs/Sources/SQS)
-- [S3](/docs/Sources/S3)
+- [SQS](/docs/Sources/AWS/SQS)
+- [S3](/docs/Sources/AWS/S3)
 
