@@ -114,6 +114,19 @@ connection:
 
 
 
+### Terminology
+
+Element: It is equivalent to a ProcessGroup in NiFi, where a defined workflow takes place.
+
+Source: It is an Element (Process Group) that connects to an external tool to use it for data ingestion.
+
+Destination: It is an Element (Process Group) that connects to an external tool where data will be sent.
+
+Alterations: It modify the format of the input data provided by a Source.
+
+Component: It is equivalent to a Process in NiFi, where a specific task is performed.
+
+
 ### Example
 
 
