@@ -16,7 +16,7 @@ DCNiOS creates the specified workflow in Apache NiFi using the .json file, subst
 - The path of your ProcessGroup (.json file).Required.
 - The variables that compose the workflow (as a list).
 
-Also, a generic element can use [Alterations](/docs/Alterations) if it is connected with another element, or the subsection `component` to modify the time execution or the node execution. he user must know the names of the NiFi processes defined in the .json.
+Also, a generic element can use [Alterations](/docs/Alterations) if it is connected with another element, or the subsection `component` to modify the time execution or the node execution. he user must know the names of the NiFi Processor defined in the .json.
 
 To use a Generic Element that interacts with other elements, it is necessary to use an Input or Output port with the default name. Please use only one Input and one Output.
 

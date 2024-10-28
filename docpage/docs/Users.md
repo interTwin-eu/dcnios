@@ -78,7 +78,7 @@ Alterations:
 
 #### Components Subsection
 
-The components subsection changes the behavior of an inter-process. When you deploy an element, there are some processes running in the background. You can change the seconds between executions (execution ratio) and select which node will perform the execution (PRIMARY or ALL). However, it is necessary to know the name of the process. For example, the destination OSCAR has the component InvokeOSCAR, which sends an HTTP call.
+The components subsection changes the behavior of an inter-process. When you deploy an element, there are some processors running in the background. You can change the seconds between executions (execution ratio) and select which node will perform the execution (PRIMARY or ALL). However, it is necessary to know the name of the process. For example, the destination OSCAR has the component InvokeOSCAR, which sends an HTTP call.
 
 
 ```
@@ -118,13 +118,13 @@ connection:
 
 Element: It is equivalent to a ProcessGroup in NiFi, where a defined workflow takes place.
 
-Source: It is an Element (Process Group) that connects to an external tool to use it for data ingestion.
+Source: It is an Element (ProcessGroup) that connects to an external tool to use it for data ingestion.
 
-Destination: It is an Element (Process Group) that connects to an external tool where data will be sent.
+Destination: It is an Element (ProcessGroup) that connects to an external tool where data will be sent.
 
 Alterations: It modify the format of the input data provided by a Source.
 
-Component: It is equivalent to a Process in NiFi, where a specific task is performed.
+Component: It is equivalent to a Processor in NiFi, where a specific task is performed.
 
 
 ### Example

@@ -4,22 +4,22 @@ sidebar_position: 5
 # Component
 
 
-Component subsection is use in all Elements like Kafka, OSCAR or a Generic one. This subsection changes key parts of the workflow's operation. However, it is necessary to know the names of the Process that make up the ProcessGroup. By indicating the name of the Process, you can change the execution time and the node on which it runs (ALL or PRIMARY).
+The component subsection is used in all Elements like Kafka, OSCAR, and the Generic one. A component alters the workflow's operation by employing Apache NiFi Processors. The Processor's name, execution time and the node on which it runs (ALL or PRIMARY) must be indicated.
 
 ## Importance of Process Names
 
-To make effective adjustments, it is necessary to know the names of the Processes that comprise the ProcessGroup. This knowledge enables targeted changes, ensuring that the workflow operates as intended.
+To make effective adjustments, it is necessary to know the names of the Processors that comprise the ProcessGroup. This knowledge enables targeted changes, ensuring that the workflow operates as intended.
 
 
 ## Time Execution
 
-Time execution in Apache NiFi refers to the duration between executions of a Process within a workflow. This interval determines how often a Process runs and is crucial for managing resource utilization.
+Time execution in Apache NiFi refers to the duration between executions of a Processor within a workflow. This interval determines how often a Processor runs and is crucial for managing resource utilization.
 
 ## Node Options
 
-When a Process is set to run on the ALL node option, it executes on all available nodes in the NiFi cluster. This helps distribute the workload evenly, enhancing parallel processing and improving throughput.
+When a Processor is set to run on the ALL node option, it executes on all available nodes in the NiFi cluster. This helps distribute the workload evenly, enhancing parallel processing and improving throughput.
 
-Choosing the PRIMARY node option means the Process will run only on the designated primary node. This is useful for limiting resource use or maintaining specific configurations that shouldn’t be duplicated across nodes. 
+Choosing the PRIMARY node option means the Processor will run only on the designated primary node. This is useful for limiting resource use or maintaining specific configurations that shouldn’t be duplicated across nodes. 
 
 
 
