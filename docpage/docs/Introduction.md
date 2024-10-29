@@ -9,7 +9,7 @@ DCNiOS is an open-source command-line tool that easily manages the creation of e
 
 ![DCNiOS images](/../static/img/dcnios-logo-hor.png)
 
-Apache NiFi ProcessGroup is a group of Processors that compose a dataflow. DCNiOS uses predefined ProcessGroups that make simple actions like interacting with third-party elements (e.g., consuming from Kafka) or changing the data content (e.g.encoding the data in base64) to compose a complete dataflow. 
+Apache NiFi ProcessGroup is a group of processes that compose a dataflow. DCNiOS uses predefined ProcessGroups that make simple actions like interacting with third-party elements (e.g., consuming from Kafka) or changing the data content (e.g.encoding the data in base64) to compose a complete dataflow. 
 
 In DCNiOS documentation, the ProcessGroups are split by purpose into three main groups: 'Sources', 'Destinations', and 'Alterations'.
 - 'Sources' interact with third-party elements as the input data receiver.

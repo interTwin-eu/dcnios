@@ -78,7 +78,7 @@ Alterations:
 
 #### Components Subsection
 
-The components subsection changes the behavior of an inter-process. When you deploy an element, there are some processors running in the background. You can change the seconds between executions (execution ratio) and select which node will perform the execution (PRIMARY or ALL). However, it is necessary to know the name of the process. For example, the destination OSCAR has the component InvokeOSCAR, which sends an HTTP call.
+The components subsection changes the behavior of an inter-process. When you deploy an element, there are some processes running in the background. You can change the seconds between executions (execution ratio) and select which node will perform the execution (PRIMARY or ALL). However, it is necessary to know the name of the process. For example, the destination OSCAR has the component InvokeOSCAR, which sends an HTTP call.
 
 
 ```

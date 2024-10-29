@@ -1,7 +1,7 @@
 # DCNiOS
 
 
-[DCNiOS](https://intertwin-eu.github.io/dcnios) is an open-source command-line tool to easily manage the creation of event-driven data processing flows. DCNiOS, Data Connector through Apache NiFi for OSCAR, facilitates the creation of event-driven processor connecting a Storage System like [dCache](http://dcache.org) or [Amazon S3](https://aws.amazon.com/s3) to a scalable OSCAR cluster by employing predefined dataflows that are processed by Apache NiFi.
+[DCNiOS](https://intertwin-eu.github.io/dcnios) is an open-source command-line tool to easily manage the creation of event-driven data processing flows. DCNiOS, Data Connector through Apache NiFi for OSCAR, facilitates the creation of event-driven processes connecting a Storage System like [dCache](http://dcache.org) or [Amazon S3](https://aws.amazon.com/s3) to a scalable OSCAR cluster by employing predefined dataflows that are processed by Apache NiFi.
 
 [Apache NiFi](http://nifi.apache.org) is a reliable system to process and distribute data through powerful and scalable directed graphs of data routing, transformation, and system mediation logic.
 
