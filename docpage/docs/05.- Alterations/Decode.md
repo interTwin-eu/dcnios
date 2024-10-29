@@ -16,3 +16,8 @@ alterations:
   - action: Decode
     Encoding: base64
 ```
+
+Decode Alteration consists of the following component:
+-EncodeContent
+
+In this case, DCNiOS uses the same file as the Encode ProcessGroup; it simply changes the configuration.

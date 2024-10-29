@@ -13,6 +13,9 @@ SQS Source consumes from an AWS SQS queue. It creates an SQS in creation time, r
 Here is an example of the configuration file. Check the documentation of [AWS credentials](/dcnios/docs/Sources/AWS/) to define the Access Key and Secret Key.
 
 
+SQS Source consists of the following component:
+- GetSQS
+
 ```
 SQS:
  - name: sqs

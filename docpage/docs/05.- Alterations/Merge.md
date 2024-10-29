@@ -21,3 +21,6 @@ alterations:
     maxMessages: 10
     windowSeconds: 2
 ```
+
+Merge Alteration consists of the following component:
+- MergeContent
