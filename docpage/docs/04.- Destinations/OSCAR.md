@@ -11,7 +11,7 @@ The OSCAR Destination invokes an OSCAR service asynchronously:
 - Token or user/password. User/password or token. The user/password has priority over the token. Please, do not edit the OSCAR services. Required.
 
 
-Destination is composed of this component:
+OSCAR Destination consists of the following component:
 - InvokeOSCAR
 
 

@@ -14,3 +14,7 @@ alterations:
   - action: Encode
     Encoding: base64
 ```
+
+
+Encode Alteration consists of the following component:
+- EncodeContent

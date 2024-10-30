@@ -14,6 +14,10 @@ The Kafka Source allows us to consume a Kafka topic. It requires this informatio
 
 An SSL connection between NiFi and Kafka is necessary. A PKCS12 certificate and the certificate's password must be provided.
 
+
+Kafka Source consists of the following component:
+- ConsumeKafka_2_6
+
 ```
   Kafka:
     - name: kafka
