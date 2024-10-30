@@ -12,7 +12,7 @@ The generic section creates a custom workflow by providing a ProcessGroup file (
 
 DCNiOS creates the specified workflow in Apache NiFi using the .json file, substitutes the environment variables, and uses the same configuration characteristics as other Elements such as Connections and Components. Additionally, make the connections with other Elements. Thus, the declarative .yaml file has the following structure:
 
-- An identifier name of the process. It must be unique. Required.
+- An identifier name of the Element (ProcessGrop in NiFi). It must be unique. Required.
 - The path of your ProcessGroup (.json file).Required.
 - The variables that compose the workflow (as a list).
 

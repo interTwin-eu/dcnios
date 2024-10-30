@@ -6,10 +6,6 @@ sidebar_position: 5
 
 The component subsection is used in all Elements like Kafka, OSCAR, and the Generic one. A component alters the workflow's operation by employing Apache NiFi Processors. The Processor's name, execution time and the node on which it runs (ALL or PRIMARY) must be indicated.
 
-## Importance of Process Names
-
-To make effective adjustments, it is necessary to know the names of the Processors that comprise the ProcessGroup. This knowledge enables targeted changes, ensuring that the workflow operates as intended.
-
 
 ## Time Execution
 
