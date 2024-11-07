@@ -16,11 +16,11 @@ DCNiOS can use some AWS as input. A valid pair of AWS Access Key and AWS Secret 
    aws_access_key_id = AK<>
    aws_secret_access_key = <>
    ```
-- From the file of DCNiOS workflow file named `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
+- From the DCNiOS workflow file using the argument `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
 
 
 
-AWS_DEFAULT_REGION is mandatory in any Source that uses AWS in the configuration file. These ProcessGroups can employ AWS credentials:
-- [SQS](/docs/Sources/SQS)
-- [S3](/docs/Sources/S3)
+AWS_DEFAULT_REGION is mandatory for any that uses AWS in the configuration file. These ProcessGroups use AWS credentials:
+- [SQS](/docs/Sources/AWS/SQS)
+- [S3](/docs/Sources/AWS/S3)
 
