@@ -88,6 +88,18 @@ components:
 ```
 
 
+#### Alterations
+
+The subsection `alterations`, inside Sources, change the data format. These alterations are applied as a descendent definition. In this example, the input data is merged into one message. Then, the merge message is encoded.
+
+```
+  - action: Merge
+    maxMessages: 10
+    windowSeconds: 7
+  - action: Encode
+    Encoding: base64
+```
+
 ### Connections
 
 
