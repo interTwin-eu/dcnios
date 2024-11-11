@@ -33,22 +33,52 @@ In DCNiOS documentation, the ProcessGroups are split by purpose into three main 
 
 ## Installation
 
-### Create a conda environment to use DCNiOS
+1. Download the repository in a local folder.
 
-``` bash
-conda create --name dcnios python=3.7.6
-conda activate dcnios
-```
+    ``` bash
+    git clone git@github.com:interTwin-eu/dcnios.git
+    cd dcnios
+    ```
 
-[Optional] Install all the requirements defined in `requirements.txt`
+2. Set up a virtual environment (optional but recommended):
 
-``` bash
-pip install -r requeriments.txt
-```
+    You can choose between Conda or Venv for managing Python dependencies.
 
-Alternatively, install the minimal requirements that DCNiOS needs.
+    #### Using Conda
 
+    Create a new Conda environment and activate it:
 
-``` bash
-pip install pyyaml==6.0 requests==2.28.2 oscar_python==1.0.3
-```
+    ``` bash
+    conda create --name dcnios python=3.7.6
+    conda activate dcnios
+    ```
+
+    #### Using Venv
+
+    Create a virtual environment with Venv and activate it:
+
+    ``` bash
+    python -m venv dcniosenv
+    source dcniosenv/bin/activate
+    ```
+
+3. Install Dependencies
+
+    Install all the required dependencies listed in requirements.txt:
+
+    ``` bash
+    pip install -r requirements.txt
+    ```
+
+    Alternatively, you can install the minimum required dependencies for DCNiOS:
+
+    ``` bash
+    pip install pyyaml==6.0 requests==2.28.2 oscar_python==1.0.3
+    ```
+4. Verify Installation
+
+    Once you've installed the dependencies. You can verify this by running a simple Python script. Try the following Python command to check if the packages are installed correctly:
+
+    ``` bash
+    python -c "import yaml, requests, oscar_python; print('All dependencies are correctly installed.')"
+    ```
