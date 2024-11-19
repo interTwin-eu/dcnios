@@ -17,26 +17,27 @@
 
 from apis import auxiliaryFunctions
 from apis import nifiManagment
+import env
 
 def createKafka(nifiConfiguration,kafkaInfo,kafkacontent):
     # Prepare config
     kafkacontent = kafkaPreparefile(kafkacontent, kafkaInfo)
     # Set ssl context configuration
-    kafkaInfo["ssl_context"]["SSL_Protocol"] = "TLS"
-    kafkaInfo["ssl_context"]["Truststore_Type"] = "PKCS12"
-    kafkaInfo["ssl_context"]["Truststore_Filename"] = "/opt/nifi" \
+    kafkaInfo[env.SSL_CONTEXT_TAG]["SSL_Protocol"] = "TLS"
+    kafkaInfo[env.SSL_CONTEXT_TAG]["Truststore_Type"] = "PKCS12"
+    kafkaInfo[env.SSL_CONTEXT_TAG][env.SSL_TRUSTORE_FILENAME_TAG] = "/opt/nifi" \
         + "/nifi-current/data/" \
-        + kafkaInfo["ssl_context"]["Truststore_Filename"]
+        + kafkaInfo[env.SSL_CONTEXT_TAG][env.SSL_TRUSTORE_FILENAME_TAG]
     kafkacontent = auxiliaryFunctions.ssl_context(kafkacontent,
-                                                  kafkaInfo["ssl_context"])
+                                                  kafkaInfo[env.SSL_CONTEXT_TAG])
     # Create object
-    nifiConfiguration.create(kafkaInfo["name"], kafkacontent)
-    nifiConfiguration.changeVariable(kafkaInfo["name"], "group_id",
-                        kafkaInfo["group_id"])
-    nifiConfiguration.changeVariable(kafkaInfo["name"], "bootstrap_servers",
-                        kafkaInfo["bootstrap_servers"])
-    nifiConfiguration.changeVariable(kafkaInfo["name"], "topic",
-                        kafkaInfo["topic"])
+    nifiConfiguration.create(kafkaInfo[env.NAME_TAG], kafkacontent)
+    nifiConfiguration.changeVariable(kafkaInfo[env.NAME_TAG], "group_id",
+                        kafkaInfo[env.KAFKA_GROUP_ID_TAG])
+    nifiConfiguration.changeVariable(kafkaInfo[env.NAME_TAG], "bootstrap_servers",
+                        kafkaInfo[env.KAFKA_BOOTSTRAP_SERVERS_TAG])
+    nifiConfiguration.changeVariable(kafkaInfo[env.NAME_TAG], "topic",
+                        kafkaInfo[env.KAFKA_TOPIC_TAG])
 
 
 
@@ -50,26 +51,26 @@ def kafkaPreparefile(filecontent, kafka):
     else:
         filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                           "security.protocol",
-                                          kafka["security_protocol"])
+                                          kafka[env.KAFKA_SECURITY_PROTOCOL_TAG])
     if "" not in kafka:
         filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                           "sasl.mechanism", "PLAIN")
     else:
         filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                           "sasl.mechanism",
-                                          kafka["sasl_mechanism"])
+                                          kafka[env.KAFKA_SASL_MECHANISM_TAG])
     filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                       "sasl.username",
-                                      kafka["sasl_username"])
+                                      kafka[env.KAFKA_SASL_USERNAME_TAG])
     filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                       "sasl.password",
-                                      kafka["sasl_password"])
-    if "separate_by_key" in kafka and kafka["separate_by_key"] == "true":
+                                      kafka[env.KAFKA_SASL_PASSWORD_TAG])
+    if env.KAFKA_SEPARATE_BY_KEY_TAG in kafka and kafka[env.KAFKA_SEPARATE_BY_KEY_TAG] == "true":
         filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                           "separate-by-key", "true")
         filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                           "message-demarcator",
-                                          kafka["message_demarcator"])
+                                          kafka[env.KAFKA_MESSAGE_DEMARCATOR_TAG])
     else:
         filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, "ConsumeKafka_2_6",
                                           "separate-by-key", "false")

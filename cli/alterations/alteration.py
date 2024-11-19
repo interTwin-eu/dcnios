@@ -17,52 +17,54 @@
 
 from apis import nifiManagment
 from apis import auxiliaryFunctions
-
+import env
 
 def createMerge(nifiConfiguration,information, name):
-    nameCompose= nameActionReturn(information["action"],name)
+    nameCompose= nameActionReturn(information[env.ALTERATION_ACTION_TAG],name)
     merge=auxiliaryFunctions.prepareforAll("./template/alterations/Merge.json",information)
-    merge = auxiliaryFunctions.addSensitiveVariable(merge, "MergeContent", "Maximum Number of Entries", information["maxMessages"])
+    merge = auxiliaryFunctions.addSensitiveVariable(merge, "MergeContent", "Maximum Number of Entries", information[env.ALTERATION_MAX_MESSAGES_TAG])
     nifiConfiguration.create(nameCompose, merge)
-    nifiConfiguration.changeSchedule(nameCompose, "MergeContent", information["windowSeconds"])
+    nifiConfiguration.changeSchedule(nameCompose, "MergeContent", information[env.ALTERATION_WINDOW_SECONDS_TAG])
 
 
 def createDecode(nifiConfiguration,information,name):
-    nameCompose= nameActionReturn(information["action"],name)
+    nameCompose= nameActionReturn(information[env.ALTERATION_ACTION_TAG],name)
     merge=auxiliaryFunctions.prepareforAll("./template/alterations/Encode_Decode.json",information)
     merge = auxiliaryFunctions.addSensitiveVariable(merge, "EncodeContent", "Mode", "Decode")
-    if "Encoding" in information:
-        merge = auxiliaryFunctions.addSensitiveVariable(merge, "EncodeContent", "Encoding", information["Encoding"])
+    if env.ALTERATION_ENCODING_TAG in information:
+        merge = auxiliaryFunctions.addSensitiveVariable(merge, "EncodeContent", "Encoding", information[env.ALTERATION_ENCODING_TAG])
     nifiConfiguration.create(nameCompose, merge)
 
 def createEncode(nifiConfiguration,information,name):
-    nameCompose= nameActionReturn(information["action"],name)
+    nameCompose= nameActionReturn(information[env.ALTERATION_ACTION_TAG],name)
     merge=auxiliaryFunctions.prepareforAll("./template/alterations/Encode_Decode.json",information)
-    if "Encoding" in information:
-        merge = auxiliaryFunctions.addSensitiveVariable(merge, "EncodeContent", "Encoding", information["Encoding"])
+    if env.ALTERATION_ENCODING_TAG in information:
+        merge = auxiliaryFunctions.addSensitiveVariable(merge, "EncodeContent", "Encoding", information[env.ALTERATION_ENCODING_TAG])
     nifiConfiguration.create(nameCompose, merge)
 
 
 
 def createAlteration(nifiConfiguration,allInformation):
-    name=allInformation["name"]
-    for alter in allInformation["alterations"]:
-        if alter["action"]=="Merge":
+    name=allInformation[env.NAME_TAG]
+    for alter in allInformation[env.ALTERATION_TAG]:
+        if alter[env.ALTERATION_ACTION_TAG]==env.ALTERATION_MERGE_TAG:
             createMerge(nifiConfiguration,alter,name)
-        elif alter["action"]=="Encode":
+        elif alter[env.ALTERATION_ACTION_TAG]==env.ALTERATION_ENCODE_TAG:
             createEncode(nifiConfiguration,alter,name)
-        elif alter["action"]=="Decode":
+        elif alter[env.ALTERATION_ACTION_TAG]==env.ALTERATION_DECODE_TAG:
             createDecode(nifiConfiguration,alter,name)
     connectAlteration(nifiConfiguration,allInformation)
 
 
 def connectAlteration(nifiConfiguration,allInformation):
-    name=allInformation["name"]
-    for index,step in enumerate(allInformation["alterations"]):
+    name=allInformation[env.NAME_TAG]
+    for index,step in enumerate(allInformation[env.ALTERATION_TAG]):
         if index == 0:
-            nifiConfiguration.makeConnection(name,nameActionReturn(step["action"],name))
+            nifiConfiguration.makeConnection(name,nameActionReturn(step[env.ALTERATION_ACTION_TAG],name))
         else:
-            nifiConfiguration.makeConnection(nameActionReturn(allInformation["alterations"][index-1]["action"],name),nameActionReturn(step["action"],name))
+            nifiConfiguration.makeConnection(nameActionReturn(allInformation[env.ALTERATION_TAG][index-1][env.ACTION_TAG],name),
+                                             nameActionReturn(step[env.ALTERATION_ACTION_TAG],
+                                                              name))
 
 def nameActionReturn(nameAction,nameSource):
     return nameAction+ " of "+ nameSource
