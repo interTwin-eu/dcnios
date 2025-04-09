@@ -20,7 +20,7 @@ Apache NiFi can be automatically deployed using the [Infrastructure Manager (IM)
 ## Achievements
 
 <a href="https://eu.badgr.com/public/assertions/0vLlQBANQzyHMOrmcsck3w?identity__url=https:%2F%2Fgithub.com%2FEOSC-synergy%2Foscar.assess.sqaaas%2Fcommit%2F10254d15a9230f45c84dae22f3711653162faf78">
-<img src="docpage/docs/images/badge_software_silver.png" alt="Silver Badge" width="150"></a>
+<img src="docpage/docs/images/badge_software_silver.png" alt="Silver Badge" width="250"></a>
 
 This software has received a silver badge according to the [Software Quality Baseline criteria](https://www.eosc-synergy.eu/for-developers/) defined by the [EOSC-Synergy](https://www.eosc-synergy.eu) project.
 

@@ -7,7 +7,7 @@ sidebar_position: 1
 DCNiOS is an open-source command-line tool that easily manages the creation of event-driven data processing flows. DCNiOS reads a file with a workflow defined in a YAML structure. Then, DCNiOS creates this workflow in an Apache NiFi cluster. DCNiOS uses transparently the Apache NiFi [ProcessGroups](https://nifi.apache.org/docs/nifi-docs/html/user-guide.html#Configuring_a_ProcessGroup) to create predefined workflows.
 
 
-![DCNiOS images](/../static/img/dcnios-logo-hor.png)
+![DCNiOS images](../static/img/dcnios-logo-hor.png)
 
 Apache NiFi ProcessGroup is a group of Processors that compose a dataflow. DCNiOS uses predefined ProcessGroups that make simple actions like interacting with third-party elements (e.g., consuming from Kafka) or changing the data content (e.g.encoding the data in base64) to compose a complete dataflow. 
 
@@ -23,12 +23,12 @@ In DCNiOS documentation, the ProcessGroups are split by purpose into three main 
 ## Prerequisites
 
 - OSCAR cluster containing the user-defined OSCAR Services. You can see some [examples](https://github.com/grycap/oscar/tree/master/examples) in GitHub.
-- Apache Nifi cluster deployed.
+- Apache NiFi cluster deployed.
 - A Python distribution such as [Anaconda](https://www.anaconda.com/) or Python version 3.7.6
-- An input source (one of these is enough: dCache, Kafka, S3 AWS, SQS AWS)
+- An input source (e.g.: dCache, Kafka, S3 AWS, SQS AWS)
 
 
-[IM](https://www.grycap.upv.es/im/index.php) can deploy a Kubernetes cluster that includes OSCAR and Apache NiFi.
+[IM](https://www.grycap.upv.es/im/index.php) can deploy a Kubernetes cluster that includes an OSCAR cluster and Apache NiFi.
 
 
 ## Installation
