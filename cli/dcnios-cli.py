@@ -26,19 +26,6 @@ from sources.generic import *
 import env
 import argparse
 
-#types = ["dCache", "OSCAR", "S3", "SQS", "generic", "Kafka"]
-#typesSSL = ["Kafka"]
-
-"""def doType(type, function):
-    if type in data[env.NIFI_TAG]:
-        for singularoftype in data[env.NIFI_TAG][type]:
-            function(singularoftype[env.NAME_TAG])
-            print(str(function.__qualname__) + " " + singularoftype[env.NAME_TAG])
-
-
-def makeActionWithAllType(allType, function):
-    for type in allType:
-        doType(type, function)"""
 
 def functionAll(function):
     for dic in env.info:
@@ -46,16 +33,16 @@ def functionAll(function):
             for information in data[env.NIFI_TAG][dic["type"]][dic["id"]]:
                 function(information[env.NAME_TAG])
                 print(str(function.__qualname__) + " " + information[env.NAME_TAG])
-                if env.ALTERATION_TAG in information:
-                    for alter in information[env.ALTERATION_TAG]:
+                if env.ALTERATION_ALTERATIONS_TAG in information:
+                    for alter in information[env.ALTERATION_ALTERATIONS_TAG]:
                         function(alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG],information[env.NAME_TAG]))
                         print(str(function.__qualname__) + " " + alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG],information[env.NAME_TAG]))
     if env.GENERIC_TAG in data[env.NIFI_TAG]:
         for information in data[env.NIFI_TAG][env.GENERIC_TAG]:
                 function(information[env.NAME_TAG])
                 print(str(function.__qualname__) + " " + information[env.NAME_TAG])
-                if env.ALTERATION_TAG in information:
-                    for alter in information[env.ALTERATION_TAG]:
+                if env.ALTERATION_ALTERATIONS_TAG in information:
+                    for alter in information[env.ALTERATION_ALTERATIONS_TAG]:
                         function(alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG],information[env.NAME_TAG]))
                         print(str(function.__qualname__) + " " + alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG],information[env.NAME_TAG]))
 
@@ -67,8 +54,8 @@ def deleteAll(nifi):
                     print("Nifi disable ssl "+ information[env.NAME_TAG])
                     nifi.disableSSL(information[env.NAME_TAG])
                 nifi.deleteProcess(information[env.NAME_TAG])
-                if env.ALTERATION_TAG in information:
-                    for alter in information[env.ALTERATION_TAG]:
+                if env.ALTERATION_ALTERATIONS_TAG in information:
+                    for alter in information[env.ALTERATION_ALTERATIONS_TAG]:
                         nifi.deleteProcess(alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG],information[env.NAME_TAG]))
                 print("Delete Process "+ information[env.NAME_TAG])
     if env.GENERIC_TAG in data[env.NIFI_TAG]:
@@ -77,8 +64,8 @@ def deleteAll(nifi):
                 print("Nifi disable ssl "+ information[env.NAME_TAG])
                 nifi.disableSSL(information[env.NAME_TAG])
             nifi.deleteProcess(information[env.NAME_TAG])
-            if env.ALTERATION_TAG in information:
-                for alter in information[env.ALTERATION_TAG]:
+            if env.ALTERATION_ALTERATIONS_TAG in information:
+                for alter in information[env.ALTERATION_ALTERATIONS_TAG]:
                     nifi.deleteProcess(alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG],information[env.NAME_TAG]))
             print("Delete Process "+ information[env.NAME_TAG])
         
@@ -142,15 +129,13 @@ elif args.action is not None and args.file is not None:
                         if info["id"] in data[env.NIFI_TAG][env.SOURCE_TAG]:
                             for information in data[env.NIFI_TAG][env.SOURCE_TAG][info["id"]]:
                                 if connection[env.CONNECTION_FROM_TAG] == information[env.NAME_TAG]:
-                                    if env.ALTERATION_TAG in information and information[env.ALTERATION_TAG] != None:
-                                        alterName = alteration.nameActionReturn(information[env.ALTERATION_TAG][-1][env.ALTERATION_ACTION_TAG],information[env.NAME_TAG])
+                                    if env.ALTERATION_ALTERATIONS_TAG in information and information[env.ALTERATION_ALTERATIONS_TAG] != None:
+                                        alterName = alteration.nameActionReturn(information[env.ALTERATION_ALTERATIONS_TAG][-1][env.ALTERATION_ACTION_TAG],information[env.NAME_TAG])
                                         nifi.makeConnection(alterName, connection[env.CONNECTION_TO_TAG])
                                     else:
                                         nifi.makeConnection(connection[env.CONNECTION_FROM_TAG], connection[env.CONNECTION_TO_TAG])
         elif args.action == "delete":
             deleteAll(nifi)
-                #makeActionWithAllType(typesSSL, nifi.disableSSL)
-                #makeActionWithAllType(types, nifi.deleteProcess)
             # Delete of SQS, not the notification
             if env.S3_TAG in data[env.NIFI_TAG]:
                 for s3 in data[env.NIFI_TAG][env.S3_TAG]:
@@ -161,12 +146,8 @@ elif args.action is not None and args.file is not None:
                     deleteSQSQueue(sqs)
         elif args.action == "start":
             functionAll(nifi.startProcess)
-                #startAll(nifi,info)
-            #makeActionWithAllType(types, nifi.startProcess)
         elif args.action == "stop":
             functionAll(nifi.stopProcess)
-                #stoptAll(nifi,info)
-            #makeActionWithAllType(types, nifi.stopProcess)
         else:
             print("incorrect command try again")
 if args.action == "changeSchedule" or args.action == "cs":

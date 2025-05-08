@@ -46,7 +46,7 @@ def createEncode(nifiConfiguration,information,name):
 
 def createAlteration(nifiConfiguration,allInformation):
     name=allInformation[env.NAME_TAG]
-    for alter in allInformation[env.ALTERATION_TAG]:
+    for alter in allInformation[env.ALTERATION_ALTERATIONS_TAG]:
         if alter[env.ALTERATION_ACTION_TAG]==env.ALTERATION_MERGE_TAG:
             createMerge(nifiConfiguration,alter,name)
         elif alter[env.ALTERATION_ACTION_TAG]==env.ALTERATION_ENCODE_TAG:
@@ -58,11 +58,11 @@ def createAlteration(nifiConfiguration,allInformation):
 
 def connectAlteration(nifiConfiguration,allInformation):
     name=allInformation[env.NAME_TAG]
-    for index,step in enumerate(allInformation[env.ALTERATION_TAG]):
+    for index,step in enumerate(allInformation[env.ALTERATION_ALTERATIONS_TAG]):
         if index == 0:
             nifiConfiguration.makeConnection(name,nameActionReturn(step[env.ALTERATION_ACTION_TAG],name))
         else:
-            nifiConfiguration.makeConnection(nameActionReturn(allInformation[env.ALTERATION_TAG][index-1][env.ACTION_TAG],name),
+            nifiConfiguration.makeConnection(nameActionReturn(allInformation[env.ALTERATION_ALTERATIONS_TAG][index-1][env.ALTERATION_ACTION_TAG],name),
                                              nameActionReturn(step[env.ALTERATION_ACTION_TAG],
                                                               name))
 

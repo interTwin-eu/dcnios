@@ -45,7 +45,7 @@ def postJob(info,nifi):
         nifi.enableSSL(info[env.NAME_TAG])
     nifi.newProcessInfo(info[env.NAME_TAG])
     nifi.updateComponent(info)
-    if env.ALTERATION_TAG in info:
+    if env.ALTERATION_ALTERATIONS_TAG in info:
         alteration.createAlteration(nifi,info)
 
 
