@@ -23,7 +23,7 @@ import env
 
 def addSensitiveVariable(file, processorName, key, value):
     for processor in file["flowContents"]["processors"]:
-        if processor[env.NAME_TAG] == processorName:
+        if processor["name"] == processorName:
             processor["properties"][key] = value
             return file
 
