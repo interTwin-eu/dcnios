@@ -21,6 +21,7 @@ import boto3
 import env
 from apis import auxiliaryFunctions
 
+
 def getAWSCredentials(configuration):
     if env.AWS_ACCESS_KEY_ID_TAG in os.environ and os.environ[env.AWS_ACCESS_KEY_ID_TAG] != "" \
         and env.AWS_SECRET_ACCESS_KEY_TAG in os.environ \
@@ -72,15 +73,13 @@ def createSQSQueue(configuration):
     return sqsClient.get_queue_url(QueueName=configuration[env.QUEUE_NAME_TAG])
 
 
-
-
-def awsCredentialPreparefile(filecontent, configuration,processorName):
+def awsCredentialPreparefile(filecontent, configuration, processorName):
     filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, processorName, "Access Key",
-                                      configuration[env.AWS_ACCESS_KEY_ID_TAG])
+                                                          configuration[env.AWS_ACCESS_KEY_ID_TAG])
     filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, processorName, "Secret Key",
-                                      configuration[env.AWS_SECRET_ACCESS_KEY_TAG])
+                                                          configuration[env.AWS_SECRET_ACCESS_KEY_TAG])
     filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, processorName, "Region",
-                                      configuration[env.AWS_DEFAULT_REGION_TAG])
+                                                          configuration[env.AWS_DEFAULT_REGION_TAG])
     return filecontent
 
 

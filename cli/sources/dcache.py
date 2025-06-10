@@ -20,8 +20,7 @@ from apis import nifiManagment
 import env
 
 
-
-def createDcache(nifiConfiguration,dCacheInfo,dcachecontent):
+def createDcache(nifiConfiguration, dCacheInfo, dcachecontent):
     nifiConfiguration.create(dCacheInfo[env.NAME_TAG], dcachecontent)
     command = "simple-client.py --state /state/" \
         + dCacheInfo[env.DCACHE_STATEFILE_TAG] + " --endpoint " \

@@ -21,12 +21,12 @@ from oscar_python.client import Client
 import env
 
 
-def createOSCAR(nifiConfiguration,oscarInfo,oscarcontent):
+def createOSCAR(nifiConfiguration, oscarInfo, oscarcontent):
     nifiConfiguration.create(oscarInfo[env.NAME_TAG], oscarcontent)
     nifiConfiguration.changeVariable(oscarInfo[env.NAME_TAG], "endpoint",
-                        oscarInfo[env.OSCAR_ENDPOINT_TAG])
+                                     oscarInfo[env.OSCAR_ENDPOINT_TAG])
     nifiConfiguration.changeVariable(oscarInfo[env.NAME_TAG], "service",
-                        oscarInfo[env.OSCAR_SERVICE_TAG])
+                                     oscarInfo[env.OSCAR_SERVICE_TAG])
     if env.OSCAR_USER_TAG in oscarInfo and env.OSCAR_PASSWORD_TAG in oscarInfo:
         client = Client("cluster-id", oscarInfo[env.OSCAR_ENDPOINT_TAG],
                         oscarInfo[env.OSCAR_USER_TAG], oscarInfo[env.OSCAR_PASSWORD_TAG], True)
@@ -35,4 +35,4 @@ def createOSCAR(nifiConfiguration,oscarInfo,oscarcontent):
         nifiConfiguration.changeVariable(oscarInfo[env.NAME_TAG], "token", token)
     else:
         nifiConfiguration.changeVariable(oscarInfo[env.NAME_TAG], "token",
-                            oscarInfo[env.OSCAR_TOKEN_TAG])
+                                         oscarInfo[env.OSCAR_TOKEN_TAG])

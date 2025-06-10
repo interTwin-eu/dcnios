@@ -19,8 +19,9 @@ from apis import auxiliaryFunctions
 from apis import nifiManagment
 import env
 
-def createGeneric(nifiConfiguration,genricInfo,genericcontent):
+
+def createGeneric(nifiConfiguration, genricInfo, genericcontent):
     nifiConfiguration.create(genricInfo[env.NAME_TAG], genericcontent)
     for variable in genricInfo[env.VARIABLE_TAG]:
         nifiConfiguration.changeVariable(genricInfo[env.NAME_TAG], variable,
-                            genricInfo[env.VARIABLE_TAG][variable])
+                                         genricInfo[env.VARIABLE_TAG][variable])

@@ -24,21 +24,20 @@ from apis import aws
 import env
 
 
-
-def createGetS3(nifiConfiguration,s3Info,s3content):
+def createGetS3(nifiConfiguration, s3Info, s3content):
     s3Info[env.QUEUE_NAME_TAG] = s3Info[env.AWS_S3_BUCKET_TAG] + "_events"
-    createGetSQS(nifiConfiguration,s3Info,s3content)
+    createGetSQS(nifiConfiguration, s3Info, s3content)
     aws.s3NotificationSQS(s3Info)
 
 
-def createGetSQS(nifiConfiguration,sqsInfo,sqscontent):
+def createGetSQS(nifiConfiguration, sqsInfo, sqscontent):
     # Get credentials of AWS
     aws.getAWSCredentials(sqsInfo)
     # Create SQS
     sqsDetails = aws.createSQSQueue(sqsInfo)
     # Prepare config
-    sqscontent = aws.awsCredentialPreparefile(sqscontent, sqsInfo,"GetSQS")
+    sqscontent = aws.awsCredentialPreparefile(sqscontent, sqsInfo, "GetSQS")
     # Create object
     nifiConfiguration.create(sqsInfo[env.NAME_TAG], sqscontent)
     nifiConfiguration.changeVariable(sqsInfo[env.NAME_TAG], 'queueurl',
-                        sqsDetails['QueueUrl'])
+                                     sqsDetails['QueueUrl'])

@@ -35,54 +35,54 @@ def functionAll(function):
                 print(str(function.__qualname__) + " " + information[env.NAME_TAG])
                 if env.ALTERATION_ALTERATIONS_TAG in information:
                     for alter in information[env.ALTERATION_ALTERATIONS_TAG]:
-                        function(alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG],information[env.NAME_TAG]))
-                        print(str(function.__qualname__) + " " + alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG],information[env.NAME_TAG]))
+                        function(alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG], information[env.NAME_TAG]))
+                        print(str(function.__qualname__) + " " + alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG], information[env.NAME_TAG]))
     if env.GENERIC_TAG in data[env.NIFI_TAG]:
         for information in data[env.NIFI_TAG][env.GENERIC_TAG]:
                 function(information[env.NAME_TAG])
                 print(str(function.__qualname__) + " " + information[env.NAME_TAG])
                 if env.ALTERATION_ALTERATIONS_TAG in information:
                     for alter in information[env.ALTERATION_ALTERATIONS_TAG]:
-                        function(alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG],information[env.NAME_TAG]))
-                        print(str(function.__qualname__) + " " + alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG],information[env.NAME_TAG]))
+                        function(alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG], information[env.NAME_TAG]))
+                        print(str(function.__qualname__) + " " + alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG], information[env.NAME_TAG]))
+
 
 def deleteAll(nifi):
     for dic in env.info:
         if dic["id"] in data[env.NIFI_TAG][dic["type"]]:
             for information in data[env.NIFI_TAG][dic["type"]][dic["id"]]:
                 if auxiliaryFunctions.checkExistSsl_context(information):
-                    print("Nifi disable ssl "+ information[env.NAME_TAG])
+                    print("Nifi disable ssl " + information[env.NAME_TAG])
                     nifi.disableSSL(information[env.NAME_TAG])
                 nifi.deleteProcess(information[env.NAME_TAG])
                 if env.ALTERATION_ALTERATIONS_TAG in information:
                     for alter in information[env.ALTERATION_ALTERATIONS_TAG]:
-                        nifi.deleteProcess(alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG],information[env.NAME_TAG]))
-                print("Delete Process "+ information[env.NAME_TAG])
+                        nifi.deleteProcess(alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG], information[env.NAME_TAG]))
+                print("Delete Process " + information[env.NAME_TAG])
     if env.GENERIC_TAG in data[env.NIFI_TAG]:
         for information in data[env.NIFI_TAG][env.GENERIC_TAG]:
             if auxiliaryFunctions.checkExistSsl_context(information):
-                print("Nifi disable ssl "+ information[env.NAME_TAG])
+                print("Nifi disable ssl " + information[env.NAME_TAG])
                 nifi.disableSSL(information[env.NAME_TAG])
             nifi.deleteProcess(information[env.NAME_TAG])
             if env.ALTERATION_ALTERATIONS_TAG in information:
                 for alter in information[env.ALTERATION_ALTERATIONS_TAG]:
-                    nifi.deleteProcess(alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG],information[env.NAME_TAG]))
-            print("Delete Process "+ information[env.NAME_TAG])
-        
+                    nifi.deleteProcess(alteration.nameActionReturn(alter[env.ALTERATION_ACTION_TAG], information[env.NAME_TAG]))
+            print("Delete Process " + information[env.NAME_TAG])
+
 
 def createAll(nifi):
     for dic in env.info:
         if dic["id"] in data[env.NIFI_TAG][dic["type"]]:
             for information in data[env.NIFI_TAG][dic["type"]][dic["id"]]:
-                informationcontent=auxiliaryFunctions.prepareforAll(dic["file"],information)
-                dic['function'](nifi,information,informationcontent)
-                auxiliaryFunctions.postJob(information,nifi)
+                informationcontent = auxiliaryFunctions.prepareforAll(dic["file"], information)
+                dic['function'](nifi, information, informationcontent)
+                auxiliaryFunctions.postJob(information, nifi)
     if env.GENERIC_TAG in data[env.NIFI_TAG]:
         for information in data[env.NIFI_TAG][env.GENERIC_TAG]:
-            informationcontent=auxiliaryFunctions.prepareforAll(information[env.GENERIC_FILE_TAG],information)
-            createGeneric(nifi,information,informationcontent)
-            auxiliaryFunctions.postJob(information,nifi)
-
+            informationcontent = auxiliaryFunctions.prepareforAll(information[env.GENERIC_FILE_TAG], information)
+            createGeneric(nifi, information, informationcontent)
+            auxiliaryFunctions.postJob(information, nifi)
 
 
 parser = argparse.ArgumentParser(
@@ -98,9 +98,9 @@ predefined dataflows that are processed by Apache NiFi.',
                       --processGroup PROCESSGROUP --component COMPONENT --seconds SECONDS")
 parser.add_argument('action',
                     choices=["apply", "start", "stop", "delete", "changeSchedule"],
-                    help='', 
+                    help='',
                     )
-parser.add_argument('--file','-f', help='Use a file to [apply | start | stop | delete ] a workflow')
+parser.add_argument('--file', '-f', help='Use a file to [apply | start | stop | delete ] a workflow')
 parser.add_argument('--host', help='Define the host only for the action of changeSchedule')
 parser.add_argument('--user', "-u",  help='Define the user only for the action of changeSchedule')
 parser.add_argument('--password', "-p",  help='Define the password only for the action of changeSchedule')
@@ -129,8 +129,8 @@ elif args.action is not None and args.file is not None:
                         if info["id"] in data[env.NIFI_TAG][env.SOURCE_TAG]:
                             for information in data[env.NIFI_TAG][env.SOURCE_TAG][info["id"]]:
                                 if connection[env.CONNECTION_FROM_TAG] == information[env.NAME_TAG]:
-                                    if env.ALTERATION_ALTERATIONS_TAG in information and information[env.ALTERATION_ALTERATIONS_TAG] != None:
-                                        alterName = alteration.nameActionReturn(information[env.ALTERATION_ALTERATIONS_TAG][-1][env.ALTERATION_ACTION_TAG],information[env.NAME_TAG])
+                                    if env.ALTERATION_ALTERATIONS_TAG in information and information[env.ALTERATION_ALTERATIONS_TAG] is not None:
+                                        alterName = alteration.nameActionReturn(information[env.ALTERATION_ALTERATIONS_TAG][-1][env.ALTERATION_ACTION_TAG], information[env.NAME_TAG])
                                         nifi.makeConnection(alterName, connection[env.CONNECTION_TO_TAG])
                                     else:
                                         nifi.makeConnection(connection[env.CONNECTION_FROM_TAG], connection[env.CONNECTION_TO_TAG])

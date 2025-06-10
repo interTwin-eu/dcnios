@@ -36,18 +36,18 @@ def prepareforAll(fileName, info):
     filecontent["snapshotMetadata"]["flowIdentifier"] = ""
     filecontent["snapshotMetadata"]["version"] = -1
     if checkExistSsl_context(info):
-        filecontent = ssl_context(filecontent,info[env.SSL_CONTEXT_TAG])
+        filecontent = ssl_context(filecontent, info[env.SSL_CONTEXT_TAG])
     return filecontent
 
-def postJob(info,nifi):
+
+def postJob(info, nifi):
     if checkExistSsl_context(info):
-        print("Nifi enable ssl "+ info[env.NAME_TAG])
+        print("Nifi enable ssl " + info[env.NAME_TAG])
         nifi.enableSSL(info[env.NAME_TAG])
     nifi.newProcessInfo(info[env.NAME_TAG])
     nifi.updateComponent(info)
     if env.ALTERATION_ALTERATIONS_TAG in info:
-        alteration.createAlteration(nifi,info)
-
+        alteration.createAlteration(nifi, info)
 
 
 def checkExistSsl_context(info):
@@ -56,8 +56,9 @@ def checkExistSsl_context(info):
     else:
         return False
 
+
 def ssl_context(filecontent, variables):
-    if filecontent["flowContents"]["controllerServices"]==[]:
+    if filecontent["flowContents"]["controllerServices"] == []:
         introduceSSL(filecontent)
     else:
         pass
