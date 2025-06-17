@@ -21,6 +21,8 @@ import env
 
 
 def createMerge(nifiConfiguration, information, name):
+    if env.ALTERATION_ACTION_TAG not in information:
+        raise ValueError(f"Missing required key: {env.ALTERATION_ACTION_TAG} in {information}")
     nameCompose = nameActionReturn(information[env.ALTERATION_ACTION_TAG], name)
     merge = auxiliaryFunctions.prepareforAll("./template/alterations/Merge.json", information)
     merge = auxiliaryFunctions.addSensitiveVariable(merge, "MergeContent", "Maximum Number of Entries", information[env.ALTERATION_MAX_MESSAGES_TAG])
@@ -29,6 +31,8 @@ def createMerge(nifiConfiguration, information, name):
 
 
 def createDecode(nifiConfiguration, information, name):
+    if env.ALTERATION_ACTION_TAG not in information:
+        raise ValueError(f"Missing required key: {env.ALTERATION_ACTION_TAG} in {information}")
     nameCompose = nameActionReturn(information[env.ALTERATION_ACTION_TAG], name)
     merge = auxiliaryFunctions.prepareforAll("./template/alterations/Encode_Decode.json", information)
     merge = auxiliaryFunctions.addSensitiveVariable(merge, "EncodeContent", "Mode", "Decode")
@@ -38,6 +42,8 @@ def createDecode(nifiConfiguration, information, name):
 
 
 def createEncode(nifiConfiguration, information, name):
+    if env.ALTERATION_ACTION_TAG not in information:
+        raise ValueError(f"Missing required key: {env.ALTERATION_ACTION_TAG} in {information}")
     nameCompose = nameActionReturn(information[env.ALTERATION_ACTION_TAG], name)
     merge = auxiliaryFunctions.prepareforAll("./template/alterations/Encode_Decode.json", information)
     if env.ALTERATION_ENCODING_TAG in information:
