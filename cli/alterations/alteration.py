@@ -34,21 +34,21 @@ def createDecode(nifiConfiguration, information, name):
     if env.ALTERATION_ACTION_TAG not in information:
         raise ValueError(f"Missing required key: {env.ALTERATION_ACTION_TAG} in {information}")
     nameCompose = nameActionReturn(information[env.ALTERATION_ACTION_TAG], name)
-    merge = auxiliaryFunctions.prepareforAll("./template/alterations/Encode_Decode.json", information)
-    merge = auxiliaryFunctions.addSensitiveVariable(merge, "EncodeContent", "Mode", "Decode")
+    decode = auxiliaryFunctions.prepareforAll("./template/alterations/Encode_Decode.json", information)
+    decode = auxiliaryFunctions.addSensitiveVariable(decode, "EncodeContent", "Mode", "Decode")
     if env.ALTERATION_ENCODING_TAG in information:
-        merge = auxiliaryFunctions.addSensitiveVariable(merge, "EncodeContent", "Encoding", information[env.ALTERATION_ENCODING_TAG])
-    nifiConfiguration.create(nameCompose, merge)
+        decode = auxiliaryFunctions.addSensitiveVariable(decode, "EncodeContent", "Encoding", information[env.ALTERATION_ENCODING_TAG])
+    nifiConfiguration.create(nameCompose, decode)
 
 
 def createEncode(nifiConfiguration, information, name):
     if env.ALTERATION_ACTION_TAG not in information:
         raise ValueError(f"Missing required key: {env.ALTERATION_ACTION_TAG} in {information}")
     nameCompose = nameActionReturn(information[env.ALTERATION_ACTION_TAG], name)
-    merge = auxiliaryFunctions.prepareforAll("./template/alterations/Encode_Decode.json", information)
+    encode = auxiliaryFunctions.prepareforAll("./template/alterations/Encode_Decode.json", information)
     if env.ALTERATION_ENCODING_TAG in information:
-        merge = auxiliaryFunctions.addSensitiveVariable(merge, "EncodeContent", "Encoding", information[env.ALTERATION_ENCODING_TAG])
-    nifiConfiguration.create(nameCompose, merge)
+        encode = auxiliaryFunctions.addSensitiveVariable(encode, "EncodeContent", "Encoding", information[env.ALTERATION_ENCODING_TAG])
+    nifiConfiguration.create(nameCompose, encode)
 
 
 def createAlteration(nifiConfiguration, allInformation):
@@ -70,8 +70,7 @@ def connectAlteration(nifiConfiguration, allInformation):
             nifiConfiguration.makeConnection(name, nameActionReturn(step[env.ALTERATION_ACTION_TAG], name))
         else:
             nifiConfiguration.makeConnection(nameActionReturn(allInformation[env.ALTERATION_ALTERATIONS_TAG][index-1][env.ALTERATION_ACTION_TAG], name),
-                                             nameActionReturn(step[env.ALTERATION_ACTION_TAG],
-                                                              name))
+                                             nameActionReturn(step[env.ALTERATION_ACTION_TAG], name))
 
 
 def nameActionReturn(nameAction, nameSource):
