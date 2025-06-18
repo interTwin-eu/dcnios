@@ -24,9 +24,9 @@ def createMerge(nifiConfiguration, information, name):
     if env.ALTERATION_ACTION_TAG not in information:
         raise ValueError(f"Missing required key: {env.ALTERATION_ACTION_TAG} in {information}")
     nameCompose = nameActionReturn(information[env.ALTERATION_ACTION_TAG], name)
-    merge = auxiliaryFunctions.prepareforAll("./template/alterations/Merge.json", information)
-    merge = auxiliaryFunctions.addSensitiveVariable(merge, "MergeContent", "Maximum Number of Entries", information[env.ALTERATION_MAX_MESSAGES_TAG])
-    nifiConfiguration.create(nameCompose, merge)
+    merge_config = auxiliaryFunctions.prepareforAll("./template/alterations/Merge.json", information)
+    merge_config = auxiliaryFunctions.addSensitiveVariable(merge_config, "MergeContent", "Maximum Number of Entries", information[env.ALTERATION_MAX_MESSAGES_TAG])
+    nifiConfiguration.create(nameCompose, merge_config)
     nifiConfiguration.changeSchedule(nameCompose, "MergeContent", information[env.ALTERATION_WINDOW_SECONDS_TAG])
 
 
@@ -34,21 +34,21 @@ def createDecode(nifiConfiguration, information, name):
     if env.ALTERATION_ACTION_TAG not in information:
         raise ValueError(f"Missing required key: {env.ALTERATION_ACTION_TAG} in {information}")
     nameCompose = nameActionReturn(information[env.ALTERATION_ACTION_TAG], name)
-    decode = auxiliaryFunctions.prepareforAll("./template/alterations/Encode_Decode.json", information)
-    decode = auxiliaryFunctions.addSensitiveVariable(decode, "EncodeContent", "Mode", "Decode")
+    decode_config = auxiliaryFunctions.prepareforAll("./template/alterations/Encode_Decode.json", information)
+    decode_config = auxiliaryFunctions.addSensitiveVariable(decode_config, "EncodeContent", "Mode", "Decode")
     if env.ALTERATION_ENCODING_TAG in information:
-        decode = auxiliaryFunctions.addSensitiveVariable(decode, "EncodeContent", "Encoding", information[env.ALTERATION_ENCODING_TAG])
-    nifiConfiguration.create(nameCompose, decode)
+        decode_config = auxiliaryFunctions.addSensitiveVariable(decode_config, "EncodeContent", "Encoding", information[env.ALTERATION_ENCODING_TAG])
+    nifiConfiguration.create(nameCompose, decode_config)
 
 
 def createEncode(nifiConfiguration, information, name):
     if env.ALTERATION_ACTION_TAG not in information:
         raise ValueError(f"Missing required key: {env.ALTERATION_ACTION_TAG} in {information}")
     nameCompose = nameActionReturn(information[env.ALTERATION_ACTION_TAG], name)
-    encode = auxiliaryFunctions.prepareforAll("./template/alterations/Encode_Decode.json", information)
+    encode_config = auxiliaryFunctions.prepareforAll("./template/alterations/Encode_Decode.json", information)
     if env.ALTERATION_ENCODING_TAG in information:
-        encode = auxiliaryFunctions.addSensitiveVariable(encode, "EncodeContent", "Encoding", information[env.ALTERATION_ENCODING_TAG])
-    nifiConfiguration.create(nameCompose, encode)
+        encode_config = auxiliaryFunctions.addSensitiveVariable(encode_config, "EncodeContent", "Encoding", information[env.ALTERATION_ENCODING_TAG])
+    nifiConfiguration.create(nameCompose, encode_config)
 
 
 def createAlteration(nifiConfiguration, allInformation):
