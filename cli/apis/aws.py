@@ -18,35 +18,35 @@
 import json
 import os
 import boto3
-from apis.auxiliaryFunctions import addSensitiveVariable
+import env
 from apis import auxiliaryFunctions
-from apis import nifiManagment
+
 
 def getAWSCredentials(configuration):
-    if "AWS_ACCESS_KEY_ID" in os.environ and os.environ["AWS_ACCESS_KEY_ID"] != "" \
-        and "AWS_SECRET_ACCESS_KEY" in os.environ \
-            and os.environ["AWS_SECRET_ACCESS_KEY"] != "":
+    if env.AWS_ACCESS_KEY_ID_TAG in os.environ and os.environ[env.AWS_ACCESS_KEY_ID_TAG] != "" \
+        and env.AWS_SECRET_ACCESS_KEY_TAG in os.environ \
+            and os.environ[env.AWS_SECRET_ACCESS_KEY_TAG] != "":
         print("AWS Credentials: Credentials from environment")
-        configuration["AWS_ACCESS_KEY_ID"] = os.environ["AWS_ACCESS_KEY_ID"]
-        configuration["AWS_SECRET_ACCESS_KEY"] = \
-            os.environ["AWS_SECRET_ACCESS_KEY"]
+        configuration[env.AWS_ACCESS_KEY_ID_TAG] = os.environ[env.AWS_ACCESS_KEY_ID_TAG]
+        configuration[env.AWS_SECRET_ACCESS_KEY_TAG] = \
+            os.environ[env.AWS_SECRET_ACCESS_KEY_TAG]
     elif os.path.exists(os.environ["HOME"] + "/.aws/credentials"):
         print("AWS Credentials: Credentials from credentials file")
         session = boto3.Session(profile_name="default")
         credentials = session.get_credentials()
-        configuration["AWS_ACCESS_KEY_ID"] = credentials.access_key
-        configuration["AWS_SECRET_ACCESS_KEY"] = \
+        configuration[env.AWS_ACCESS_KEY_ID_TAG] = credentials.access_key
+        configuration[env.AWS_SECRET_ACCESS_KEY_TAG] = \
             credentials.secret_key
-    elif "AWS_ACCESS_KEY_ID" in configuration \
-            and "AWS_SECRET_ACCESS_KEY" in configuration:
+    elif env.AWS_ACCESS_KEY_ID_TAG in configuration \
+            and env.AWS_SECRET_ACCESS_KEY_TAG in configuration:
         print("AWS Credentials: Credentials from configuration file")
 
 
 def createSQSQueue(configuration):
     accountID = boto3.client('sts').get_caller_identity().get('Account')
     sqsClient = boto3.client('sqs',
-                             region_name=configuration["AWS_DEFAULT_REGION"])
-    response = sqsClient.create_queue(QueueName=configuration["queue_name"],
+                             region_name=configuration[env.AWS_DEFAULT_REGION_TAG])
+    response = sqsClient.create_queue(QueueName=configuration[env.QUEUE_NAME_TAG],
                                       Attributes={
                                           "SqsManagedSseEnabled": "false",
                                           "Policy": '{"Version":"2012-10-17'
@@ -57,52 +57,50 @@ def createSQSQueue(configuration):
                                           + 'iam::'+accountID+':root"},'
                                           + '"Action":"SQS:*","Resource"'
                                           + ':"arn:aws:sqs:'
-                                          + configuration["AWS_DEFAULT_REGION"]
+                                          + configuration[env.AWS_DEFAULT_REGION_TAG]
                                           + ':' + accountID + ':'
-                                          + configuration["queue_name"]
+                                          + configuration[env.QUEUE_NAME_TAG]
                                           + '"},{"Sid":"__sender_statement"'
                                           + ',"Effect":"Allow",'
                                           + '"Principal":{"AWS":"*"},"Action"'
                                           + ':"SQS:SendMessage",'
                                           + '"Resource":"arn:aws:sqs:'
-                                          + configuration["AWS_DEFAULT_REGION"]
+                                          + configuration[env.AWS_DEFAULT_REGION_TAG]
                                           + ':' + accountID + ':'
-                                          + configuration["queue_name"]
+                                          + configuration[env.QUEUE_NAME_TAG]
                                           + '"}]}'
                                           })
-    return sqsClient.get_queue_url(QueueName=configuration["queue_name"])
+    return sqsClient.get_queue_url(QueueName=configuration[env.QUEUE_NAME_TAG])
 
 
-
-
-def awsCredentialPreparefile(filecontent, configuration,processorName):
-    filecontent = addSensitiveVariable(filecontent, processorName, "Access Key",
-                                      configuration["AWS_ACCESS_KEY_ID"])
-    filecontent = addSensitiveVariable(filecontent, processorName, "Secret Key",
-                                      configuration["AWS_SECRET_ACCESS_KEY"])
-    filecontent = addSensitiveVariable(filecontent, processorName, "Region",
-                                      configuration["AWS_DEFAULT_REGION"])
+def awsCredentialPreparefile(filecontent, configuration, processorName):
+    filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, processorName, "Access Key",
+                                                          configuration[env.AWS_ACCESS_KEY_ID_TAG])
+    filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, processorName, "Secret Key",
+                                                          configuration[env.AWS_SECRET_ACCESS_KEY_TAG])
+    filecontent = auxiliaryFunctions.addSensitiveVariable(filecontent, processorName, "Region",
+                                                          configuration[env.AWS_DEFAULT_REGION_TAG])
     return filecontent
 
 
 def deleteSQSQueue(configuration):
     sqsClient = boto3.client('sqs',
-                             region_name=configuration["AWS_DEFAULT_REGION"])
-    queue = sqsClient.get_queue_url(QueueName=configuration["queue_name"])
+                             region_name=configuration[env.AWS_DEFAULT_REGION_TAG])
+    queue = sqsClient.get_queue_url(QueueName=configuration[env.QUEUE_NAME_TAG])
     response = sqsClient.delete_queue(QueueUrl=queue['QueueUrl'])
 
 
 def s3NotificationSQS(configuration):
     owner = boto3.client('sts').get_caller_identity().get('Account')
-    arn = "arn:aws:sqs:" + configuration["AWS_DEFAULT_REGION"] + ":" + owner \
-        + ":" + configuration["queue_name"]
+    arn = "arn:aws:sqs:" + configuration[env.AWS_DEFAULT_REGION_TAG] + ":" + owner \
+        + ":" + configuration[env.QUEUE_NAME_TAG]
     s3 = boto3.resource('s3')
-    bucket_notification = s3.BucketNotification(configuration["AWS_S3_BUCKET"])
+    bucket_notification = s3.BucketNotification(configuration[env.AWS_S3_BUCKET_TAG])
     response = bucket_notification.put(
         NotificationConfiguration={
             'QueueConfigurations': [
                 {
-                    'Id': configuration["AWS_S3_BUCKET"]+"_event",
+                    'Id': configuration[env.AWS_S3_BUCKET_TAG]+"_event",
                     'QueueArn': arn,
                     'Events': [
                         's3:ObjectCreated:*',

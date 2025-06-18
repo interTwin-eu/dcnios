@@ -18,6 +18,7 @@
 import json
 import os
 from alterations import alteration
+import env
 
 
 def addSensitiveVariable(file, processorName, key, value):
@@ -35,28 +36,29 @@ def prepareforAll(fileName, info):
     filecontent["snapshotMetadata"]["flowIdentifier"] = ""
     filecontent["snapshotMetadata"]["version"] = -1
     if checkExistSsl_context(info):
-        filecontent = ssl_context(filecontent,info["ssl_context"])
+        filecontent = ssl_context(filecontent, info[env.SSL_CONTEXT_TAG])
     return filecontent
 
-def postJob(info,nifi):
-    if checkExistSsl_context(info):
-        print("Nifi enable ssl "+ info["name"])
-        nifi.enableSSL(info["name"])
-    nifi.newProcessInfo(info["name"])
-    nifi.updateComponent(info)
-    if "alterations" in info:
-        alteration.createAlteration(nifi,info)
 
+def postJob(info, nifi):
+    if checkExistSsl_context(info):
+        print("Nifi enable ssl " + info[env.NAME_TAG])
+        nifi.enableSSL(info[env.NAME_TAG])
+    nifi.newProcessInfo(info[env.NAME_TAG])
+    nifi.updateComponent(info)
+    if env.ALTERATION_ALTERATIONS_TAG in info:
+        alteration.createAlteration(nifi, info)
 
 
 def checkExistSsl_context(info):
-    if 'ssl_context' in info:
+    if env.SSL_CONTEXT_TAG in info:
         return True
     else:
         return False
 
+
 def ssl_context(filecontent, variables):
-    if filecontent["flowContents"]["controllerServices"]==[]:
+    if filecontent["flowContents"]["controllerServices"] == []:
         introduceSSL(filecontent)
     else:
         pass

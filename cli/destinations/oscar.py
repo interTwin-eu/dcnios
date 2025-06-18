@@ -18,21 +18,21 @@
 from apis import auxiliaryFunctions
 from apis import nifiManagment
 from oscar_python.client import Client
+import env
 
 
-
-def createOSCAR(nifiConfiguration,oscarInfo,oscarcontent):
-    nifiConfiguration.create(oscarInfo["name"], oscarcontent)
-    nifiConfiguration.changeVariable(oscarInfo["name"], "endpoint",
-                        oscarInfo["endpoint"])
-    nifiConfiguration.changeVariable(oscarInfo["name"], "service",
-                        oscarInfo["service"])
-    if "user" in oscarInfo and "password" in oscarInfo:
-        client = Client("cluster-id", oscarInfo["endpoint"],
-                        oscarInfo["user"], oscarInfo["password"], True)
-        service = client.get_service(oscarInfo["service"])
+def createOSCAR(nifiConfiguration, oscarInfo, oscarcontent):
+    nifiConfiguration.create(oscarInfo[env.NAME_TAG], oscarcontent)
+    nifiConfiguration.changeVariable(oscarInfo[env.NAME_TAG], "endpoint",
+                                     oscarInfo[env.OSCAR_ENDPOINT_TAG])
+    nifiConfiguration.changeVariable(oscarInfo[env.NAME_TAG], "service",
+                                     oscarInfo[env.OSCAR_SERVICE_TAG])
+    if env.OSCAR_USER_TAG in oscarInfo and env.OSCAR_PASSWORD_TAG in oscarInfo:
+        client = Client("cluster-id", oscarInfo[env.OSCAR_ENDPOINT_TAG],
+                        oscarInfo[env.OSCAR_USER_TAG], oscarInfo[env.OSCAR_PASSWORD_TAG], True)
+        service = client.get_service(oscarInfo[env.OSCAR_SERVICE_TAG])
         token = service.json()["token"]
-        nifiConfiguration.changeVariable(oscarInfo["name"], "token", token)
+        nifiConfiguration.changeVariable(oscarInfo[env.NAME_TAG], "token", token)
     else:
-        nifiConfiguration.changeVariable(oscarInfo["name"], "token",
-                            oscarInfo["token"])
+        nifiConfiguration.changeVariable(oscarInfo[env.NAME_TAG], "token",
+                                         oscarInfo[env.OSCAR_TOKEN_TAG])

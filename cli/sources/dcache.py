@@ -17,15 +17,14 @@
 
 from apis import auxiliaryFunctions
 from apis import nifiManagment
+import env
 
 
-
-
-def createDcache(nifiConfiguration,dCacheInfo,dcachecontent):
-    nifiConfiguration.create(dCacheInfo["name"], dcachecontent)
+def createDcache(nifiConfiguration, dCacheInfo, dcachecontent):
+    nifiConfiguration.create(dCacheInfo[env.NAME_TAG], dcachecontent)
     command = "simple-client.py --state /state/" \
-        + dCacheInfo["statefile"] + " --endpoint " \
-        + dCacheInfo["endpoint"] \
-        + " --user "+dCacheInfo["user"] + " --password " \
-        + dCacheInfo["password"] + " " + dCacheInfo["folder"]
-    nifiConfiguration.changeVariable(dCacheInfo["name"], "command", command)
+        + dCacheInfo[env.DCACHE_STATEFILE_TAG] + " --endpoint " \
+        + dCacheInfo[env.DCACHE_ENDPOINT_TAG] \
+        + " --user "+dCacheInfo[env.DCACHE_USER_TAG] + " --password " \
+        + dCacheInfo[env.DCACHE_PASSWORD_TAG] + " " + dCacheInfo[env.DCACHE_FOLDER_TAG]
+    nifiConfiguration.changeVariable(dCacheInfo[env.NAME_TAG], "command", command)

@@ -18,17 +18,15 @@
 from apis import auxiliaryFunctions
 from apis import nifiManagment
 from apis import aws
+import env
 
 
-
-
-def createPutS3(nifiConfiguration,s3Info,s3content):
+def createPutS3(nifiConfiguration, s3Info, s3content):
     if "MinIO_Endpoint" in s3Info:
         auxiliaryFunctions.addSensitiveVariable(s3content, "PutS3Object", "Endpoint Override URL", s3Info["MinIO_Endpoint"])
-        s3Info["AWS_DEFAULT_REGION"]="us-east-1"
+        s3Info[env.AWS_DEFAULT_REGION_TAG] = "us-east-1"
     else:
         aws.getAWSCredentials(s3Info)
-    s3content = aws.awsCredentialPreparefile(s3content, s3Info,"PutS3Object")
-    auxiliaryFunctions.addSensitiveVariable(s3content, "PutS3Object", "Bucket", s3Info["AWS_S3_BUCKET"])
-    nifiConfiguration.create(s3Info["name"], s3content)
- 
+    s3content = aws.awsCredentialPreparefile(s3content, s3Info, "PutS3Object")
+    auxiliaryFunctions.addSensitiveVariable(s3content, "PutS3Object", "Bucket", s3Info[env.AWS_S3_BUCKET_TAG])
+    nifiConfiguration.create(s3Info[env.NAME_TAG], s3content)

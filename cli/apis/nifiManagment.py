@@ -214,7 +214,7 @@ class Nifi:
                                          "/nifi-api/controller-services/"
                                          + ssl_context_id + "/run-status",
                                          data)
-                
+
     def updateComponent(self, type):
         if "components" in type:
             print("Process group: "+type["name"])
@@ -224,10 +224,10 @@ class Nifi:
                     self.changeSchedule(type["name"], component["name"],
                                         component["seconds"])
                     print("\t  New schedule time: "
-                        + str(component["seconds"]) + " seconds")
+                          + str(component["seconds"]) + " seconds")
                 if "node" in component:
                     self.executionNode(type["name"],
-                                    component["name"], component["node"])
+                                       component["name"], component["node"])
                     print("\t  Now executing in node: " + component["node"])
 
     def newProcessInfo(self, name):
