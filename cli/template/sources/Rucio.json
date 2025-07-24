@@ -1,0 +1,546 @@
+{
+    "flowContents": {
+        "identifier": "999f058e-df6c-3bb7-bb97-ed21aac1bf37",
+        "instanceIdentifier": "36e75584-0198-1000-0000-00001c969ff5",
+        "name": "rucio",
+        "comments": "",
+        "position": {
+            "x": -808.0,
+            "y": -176.0
+        },
+        "processGroups": [],
+        "remoteProcessGroups": [],
+        "processors": [
+            {
+                "identifier": "ca659603-f178-39f1-b2fd-3e4c0b9090c2",
+                "instanceIdentifier": "fe77772e-6304-38ce-90b9-a36e2aa235b3",
+                "name": "EvaluateJsonPath",
+                "comments": "",
+                "position": {
+                    "x": 304.0,
+                    "y": 40.0
+                },
+                "type": "org.apache.nifi.processors.standard.EvaluateJsonPath",
+                "bundle": {
+                    "group": "org.apache.nifi",
+                    "artifact": "nifi-standard-nar",
+                    "version": "1.20.0"
+                },
+                "properties": {
+                    "Destination": "flowfile-attribute",
+                    "event_type": "$.event_type",
+                    "oscar-endpoint": "$.payload.custom_metadata.oscar-endpoint",
+                    "Return Type": "auto-detect",
+                    "Null Value Representation": "empty string",
+                    "oscar-service": "$.payload.custom_metadata.oscar-service",
+                    "Path Not Found Behavior": "skip"
+                },
+                "propertyDescriptors": {
+                    "Destination": {
+                        "name": "Destination",
+                        "displayName": "Destination",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "event_type": {
+                        "name": "event_type",
+                        "displayName": "event_type",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "oscar-endpoint": {
+                        "name": "oscar-endpoint",
+                        "displayName": "oscar-endpoint",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Return Type": {
+                        "name": "Return Type",
+                        "displayName": "Return Type",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Null Value Representation": {
+                        "name": "Null Value Representation",
+                        "displayName": "Null Value Representation",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "oscar-service": {
+                        "name": "oscar-service",
+                        "displayName": "oscar-service",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Path Not Found Behavior": {
+                        "name": "Path Not Found Behavior",
+                        "displayName": "Path Not Found Behavior",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    }
+                },
+                "style": {},
+                "schedulingPeriod": "0 sec",
+                "schedulingStrategy": "TIMER_DRIVEN",
+                "executionNode": "ALL",
+                "penaltyDuration": "30 sec",
+                "yieldDuration": "1 sec",
+                "bulletinLevel": "WARN",
+                "runDurationMillis": 0,
+                "concurrentlySchedulableTaskCount": 1,
+                "autoTerminatedRelationships": [
+                    "failure",
+                    "unmatched"
+                ],
+                "scheduledState": "ENABLED",
+                "retryCount": 10,
+                "retriedRelationships": [],
+                "backoffMechanism": "PENALIZE_FLOWFILE",
+                "maxBackoffPeriod": "10 mins",
+                "componentType": "PROCESSOR",
+                "groupIdentifier": "999f058e-df6c-3bb7-bb97-ed21aac1bf37"
+            },
+            {
+                "identifier": "3903c35d-c122-304d-be15-41768b672502",
+                "instanceIdentifier": "a4fd07f4-ad56-3f16-b8d3-3c0b9fb13fc0",
+                "name": "RouteOnAttribute",
+                "comments": "",
+                "position": {
+                    "x": 408.0,
+                    "y": 384.0
+                },
+                "type": "org.apache.nifi.processors.standard.RouteOnAttribute",
+                "bundle": {
+                    "group": "org.apache.nifi",
+                    "artifact": "nifi-standard-nar",
+                    "version": "1.20.0"
+                },
+                "properties": {
+                    "Routing Strategy": "Route to 'match' if all match",
+                    "event_type": "${event_type:equals(\"close\")}",
+                    "service_filter": "${oscar-service:equals(${service_filter})}"
+                },
+                "propertyDescriptors": {
+                    "Routing Strategy": {
+                        "name": "Routing Strategy",
+                        "displayName": "Routing Strategy",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "event_type": {
+                        "name": "event_type",
+                        "displayName": "event_type",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "service_filter": {
+                        "name": "service_filter",
+                        "displayName": "service_filter",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    }
+                },
+                "style": {},
+                "schedulingPeriod": "0 sec",
+                "schedulingStrategy": "TIMER_DRIVEN",
+                "executionNode": "ALL",
+                "penaltyDuration": "30 sec",
+                "yieldDuration": "1 sec",
+                "bulletinLevel": "WARN",
+                "runDurationMillis": 25,
+                "concurrentlySchedulableTaskCount": 1,
+                "autoTerminatedRelationships": [
+                    "unmatched"
+                ],
+                "scheduledState": "ENABLED",
+                "retryCount": 10,
+                "retriedRelationships": [],
+                "backoffMechanism": "PENALIZE_FLOWFILE",
+                "maxBackoffPeriod": "10 mins",
+                "componentType": "PROCESSOR",
+                "groupIdentifier": "999f058e-df6c-3bb7-bb97-ed21aac1bf37"
+            },
+            {
+                "identifier": "356843f8-e515-3e5e-b366-c2b9447ac172",
+                "instanceIdentifier": "eff4f198-2b9b-328a-b9ce-7b9791c6de13",
+                "name": "ConsumeAMQP",
+                "comments": "",
+                "position": {
+                    "x": 912.0,
+                    "y": -112.0
+                },
+                "type": "org.apache.nifi.amqp.processors.ConsumeAMQP",
+                "bundle": {
+                    "group": "org.apache.nifi",
+                    "artifact": "nifi-amqp-nar",
+                    "version": "1.20.0"
+                },
+                "properties": {
+                    "ssl-context-service": "d6c9dd41-3fb7-3334-a818-8287bc6780e4",
+                    "User Name": "",
+                    "ssl-client-auth": "",
+                    "batch.size": "10",
+                    "Port": "",
+                    "Brokers": null,
+                    "cert-authentication": "false",
+                    "auto.acknowledge": "false",
+                    "Host Name": "",
+                    "header.separator": ",",
+                    "AMQP Version": "0.9.1",
+                    "Virtual Host": "rucio",
+                    "Queue": "",
+                    "remove.curly.braces": "False"
+                },
+                "propertyDescriptors": {
+                    "ssl-context-service": {
+                        "name": "ssl-context-service",
+                        "displayName": "SSL Context Service",
+                        "identifiesControllerService": true,
+                        "sensitive": false
+                    },
+                    "User Name": {
+                        "name": "User Name",
+                        "displayName": "User Name",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "ssl-client-auth": {
+                        "name": "ssl-client-auth",
+                        "displayName": "Client Auth",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "batch.size": {
+                        "name": "batch.size",
+                        "displayName": "Batch Size",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Port": {
+                        "name": "Port",
+                        "displayName": "Port",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Brokers": {
+                        "name": "Brokers",
+                        "displayName": "Brokers",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "cert-authentication": {
+                        "name": "cert-authentication",
+                        "displayName": "Use Client Certificate Authentication",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "auto.acknowledge": {
+                        "name": "auto.acknowledge",
+                        "displayName": "Auto-Acknowledge Messages",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Host Name": {
+                        "name": "Host Name",
+                        "displayName": "Host Name",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "header.separator": {
+                        "name": "header.separator",
+                        "displayName": "Header Separator",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "AMQP Version": {
+                        "name": "AMQP Version",
+                        "displayName": "AMQP Version",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Virtual Host": {
+                        "name": "Virtual Host",
+                        "displayName": "Virtual Host",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Queue": {
+                        "name": "Queue",
+                        "displayName": "Queue",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "remove.curly.braces": {
+                        "name": "remove.curly.braces",
+                        "displayName": "Remove Curly Braces",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Password": {
+                        "name": "Password",
+                        "displayName": "Password",
+                        "identifiesControllerService": false,
+                        "sensitive": true
+                    }
+                },
+                "style": {},
+                "schedulingPeriod": "0 sec",
+                "schedulingStrategy": "TIMER_DRIVEN",
+                "executionNode": "ALL",
+                "penaltyDuration": "30 sec",
+                "yieldDuration": "1 sec",
+                "bulletinLevel": "WARN",
+                "runDurationMillis": 0,
+                "concurrentlySchedulableTaskCount": 1,
+                "autoTerminatedRelationships": [],
+                "scheduledState": "ENABLED",
+                "retryCount": 10,
+                "retriedRelationships": [],
+                "backoffMechanism": "PENALIZE_FLOWFILE",
+                "maxBackoffPeriod": "10 mins",
+                "componentType": "PROCESSOR",
+                "groupIdentifier": "999f058e-df6c-3bb7-bb97-ed21aac1bf37"
+            }
+        ],
+        "inputPorts": [],
+        "outputPorts": [
+            {
+                "identifier": "57537c52-b648-358c-8e43-a7adad36c1e3",
+                "instanceIdentifier": "cff5cf28-0b44-3a6e-b410-052407864f17",
+                "name": "output",
+                "position": {
+                    "x": 480.0,
+                    "y": 784.0
+                },
+                "type": "OUTPUT_PORT",
+                "concurrentlySchedulableTaskCount": 1,
+                "scheduledState": "ENABLED",
+                "allowRemoteAccess": false,
+                "componentType": "OUTPUT_PORT",
+                "groupIdentifier": "999f058e-df6c-3bb7-bb97-ed21aac1bf37"
+            }
+        ],
+        "connections": [
+            {
+                "identifier": "2a30198f-c01d-331c-9eb8-f6b28dae7fa2",
+                "instanceIdentifier": "09afb16f-e946-3955-9c2b-0aaf78431ce8",
+                "name": "",
+                "source": {
+                    "id": "3903c35d-c122-304d-be15-41768b672502",
+                    "type": "PROCESSOR",
+                    "groupId": "999f058e-df6c-3bb7-bb97-ed21aac1bf37",
+                    "name": "RouteOnAttribute",
+                    "comments": "",
+                    "instanceIdentifier": "a4fd07f4-ad56-3f16-b8d3-3c0b9fb13fc0"
+                },
+                "destination": {
+                    "id": "57537c52-b648-358c-8e43-a7adad36c1e3",
+                    "type": "OUTPUT_PORT",
+                    "groupId": "999f058e-df6c-3bb7-bb97-ed21aac1bf37",
+                    "name": "output",
+                    "instanceIdentifier": "cff5cf28-0b44-3a6e-b410-052407864f17"
+                },
+                "labelIndex": 1,
+                "zIndex": 0,
+                "selectedRelationships": [
+                    "matched"
+                ],
+                "backPressureObjectThreshold": 10000,
+                "backPressureDataSizeThreshold": "1 GB",
+                "flowFileExpiration": "0 sec",
+                "prioritizers": [],
+                "bends": [],
+                "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+                "partitioningAttribute": "",
+                "loadBalanceCompression": "DO_NOT_COMPRESS",
+                "componentType": "CONNECTION",
+                "groupIdentifier": "999f058e-df6c-3bb7-bb97-ed21aac1bf37"
+            },
+            {
+                "identifier": "a5709a9c-dd75-3c1a-ba14-7ccf95f0be44",
+                "instanceIdentifier": "e19f7a5c-12b0-37b6-b44b-85e3d6879041",
+                "name": "",
+                "source": {
+                    "id": "356843f8-e515-3e5e-b366-c2b9447ac172",
+                    "type": "PROCESSOR",
+                    "groupId": "999f058e-df6c-3bb7-bb97-ed21aac1bf37",
+                    "name": "ConsumeAMQP",
+                    "comments": "",
+                    "instanceIdentifier": "eff4f198-2b9b-328a-b9ce-7b9791c6de13"
+                },
+                "destination": {
+                    "id": "ca659603-f178-39f1-b2fd-3e4c0b9090c2",
+                    "type": "PROCESSOR",
+                    "groupId": "999f058e-df6c-3bb7-bb97-ed21aac1bf37",
+                    "name": "EvaluateJsonPath",
+                    "comments": "",
+                    "instanceIdentifier": "fe77772e-6304-38ce-90b9-a36e2aa235b3"
+                },
+                "labelIndex": 1,
+                "zIndex": 0,
+                "selectedRelationships": [
+                    "success"
+                ],
+                "backPressureObjectThreshold": 10000,
+                "backPressureDataSizeThreshold": "1 GB",
+                "flowFileExpiration": "0 sec",
+                "prioritizers": [],
+                "bends": [],
+                "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+                "partitioningAttribute": "",
+                "loadBalanceCompression": "DO_NOT_COMPRESS",
+                "componentType": "CONNECTION",
+                "groupIdentifier": "999f058e-df6c-3bb7-bb97-ed21aac1bf37"
+            },
+            {
+                "identifier": "f0e5074f-18cc-3288-9fe0-e9e4e81935db",
+                "instanceIdentifier": "e91f940e-1ee2-3402-a6b6-a36c08166352",
+                "name": "",
+                "source": {
+                    "id": "ca659603-f178-39f1-b2fd-3e4c0b9090c2",
+                    "type": "PROCESSOR",
+                    "groupId": "999f058e-df6c-3bb7-bb97-ed21aac1bf37",
+                    "name": "EvaluateJsonPath",
+                    "comments": "",
+                    "instanceIdentifier": "fe77772e-6304-38ce-90b9-a36e2aa235b3"
+                },
+                "destination": {
+                    "id": "3903c35d-c122-304d-be15-41768b672502",
+                    "type": "PROCESSOR",
+                    "groupId": "999f058e-df6c-3bb7-bb97-ed21aac1bf37",
+                    "name": "RouteOnAttribute",
+                    "comments": "",
+                    "instanceIdentifier": "a4fd07f4-ad56-3f16-b8d3-3c0b9fb13fc0"
+                },
+                "labelIndex": 1,
+                "zIndex": 0,
+                "selectedRelationships": [
+                    "matched"
+                ],
+                "backPressureObjectThreshold": 10000,
+                "backPressureDataSizeThreshold": "1 GB",
+                "flowFileExpiration": "0 sec",
+                "prioritizers": [],
+                "bends": [],
+                "loadBalanceStrategy": "DO_NOT_LOAD_BALANCE",
+                "partitioningAttribute": "",
+                "loadBalanceCompression": "DO_NOT_COMPRESS",
+                "componentType": "CONNECTION",
+                "groupIdentifier": "999f058e-df6c-3bb7-bb97-ed21aac1bf37"
+            }
+        ],
+        "labels": [],
+        "funnels": [],
+        "controllerServices": [
+            {
+                "identifier": "d6c9dd41-3fb7-3334-a818-8287bc6780e4",
+                "instanceIdentifier": "df1831f5-96ea-3989-b730-9dd5fdd67e12",
+                "name": "StandardSSLContextService",
+                "comments": "",
+                "type": "org.apache.nifi.ssl.StandardSSLContextService",
+                "bundle": {
+                    "group": "org.apache.nifi",
+                    "artifact": "nifi-ssl-context-service-nar",
+                    "version": "1.20.0"
+                },
+                "properties": {
+                    "Truststore Type": "JKS",
+                    "SSL Protocol": "TLS",
+                    "Keystore Type": null,
+                    "Truststore Filename": "",
+                    "Keystore Filename": null
+                },
+                "propertyDescriptors": {
+                    "Truststore Type": {
+                        "name": "Truststore Type",
+                        "displayName": "Truststore Type",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "SSL Protocol": {
+                        "name": "SSL Protocol",
+                        "displayName": "TLS Protocol",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Keystore Type": {
+                        "name": "Keystore Type",
+                        "displayName": "Keystore Type",
+                        "identifiesControllerService": false,
+                        "sensitive": false
+                    },
+                    "Truststore Filename": {
+                        "name": "Truststore Filename",
+                        "displayName": "Truststore Filename",
+                        "identifiesControllerService": false,
+                        "sensitive": false,
+                        "resourceDefinition": {
+                            "cardinality": "SINGLE",
+                            "resourceTypes": [
+                                "FILE"
+                            ]
+                        }
+                    },
+                    "Keystore Password": {
+                        "name": "Keystore Password",
+                        "displayName": "Keystore Password",
+                        "identifiesControllerService": false,
+                        "sensitive": true
+                    },
+                    "key-password": {
+                        "name": "key-password",
+                        "displayName": "Key Password",
+                        "identifiesControllerService": false,
+                        "sensitive": true
+                    },
+                    "Truststore Password": {
+                        "name": "Truststore Password",
+                        "displayName": "Truststore Password",
+                        "identifiesControllerService": false,
+                        "sensitive": true
+                    },
+                    "Keystore Filename": {
+                        "name": "Keystore Filename",
+                        "displayName": "Keystore Filename",
+                        "identifiesControllerService": false,
+                        "sensitive": false,
+                        "resourceDefinition": {
+                            "cardinality": "SINGLE",
+                            "resourceTypes": [
+                                "FILE"
+                            ]
+                        }
+                    }
+                },
+                "controllerServiceApis": [
+                    {
+                        "type": "org.apache.nifi.ssl.SSLContextService",
+                        "bundle": {
+                            "group": "org.apache.nifi",
+                            "artifact": "nifi-standard-services-api-nar",
+                            "version": "1.20.0"
+                        }
+                    }
+                ],
+                "scheduledState": "DISABLED",
+                "bulletinLevel": "WARN",
+                "componentType": "CONTROLLER_SERVICE",
+                "groupIdentifier": "999f058e-df6c-3bb7-bb97-ed21aac1bf37"
+            }
+        ],
+        "variables": {
+            "service_filter": ""
+        },
+        "defaultFlowFileExpiration": "0 sec",
+        "defaultBackPressureObjectThreshold": 10000,
+        "defaultBackPressureDataSizeThreshold": "1 GB",
+        "componentType": "PROCESS_GROUP",
+        "flowFileConcurrency": "UNBOUNDED",
+        "flowFileOutboundPolicy": "STREAM_WHEN_AVAILABLE"
+    },
+    "externalControllerServices": {},
+    "parameterContexts": {},
+    "flowEncodingVersion": "1.0",
+    "parameterProviders": {},
+    "latest": false
+}

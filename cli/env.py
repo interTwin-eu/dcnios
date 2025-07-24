@@ -18,11 +18,13 @@ from sources.dcache import createDcache
 from sources.s3sqs import createGetS3, createGetSQS
 from sources.kafka import createKafka
 from sources.generic import createGeneric
+from sources.rucio import createRucio
 from destinations.oscar import createOSCAR
 from destinations.s3aws import createPutS3
 
 folderSource = "template/sources/"
 
+ruciofile = folderSource + "Rucio.json"
 kafkafile = folderSource + "Kafka.json"
 dcachefile = folderSource + "dcache.json"
 sqsfile = folderSource + "SQS_recive.json"
@@ -79,6 +81,15 @@ AWS_DEFAULT_REGION_TAG = "AWS_DEFAULT_REGION"
 AWS_S3_BUCKET_TAG = "AWS_S3_BUCKET"
 QUEUE_NAME_TAG = "queue_name"
 
+RUCIO_TAG = "RUCIO"
+RUCIO_SERVICE_FILTER = "service_filter"
+RUCIO_QUEUE_NAME_TAG = "queue_name"
+RUCIO_HOST_TAG = "host"
+RUCIO_PORT_TAG = "port"
+RUCIO_VIRTUAL_HOST_TAG = "virtual_host"
+RUCIO_PASSWORD_TAG = "password"
+RUCIO_SSL_CONTEXT_TAG = "ssl_client_auth"
+
 DESTINATION_TAG = "Destination"
 OSCAR_TAG = "OSCAR"
 OSCAR_ENDPOINT_TAG = "endpoint"
@@ -132,4 +143,11 @@ info = [
         'function': createKafka,
         'type': SOURCE_TAG,
     },
+    {
+        'id': 'RUCIO',
+        'file': ruciofile,
+        'function': createRucio,
+        'type': SOURCE_TAG,
+    },
+    
 ]
