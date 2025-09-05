@@ -13,7 +13,7 @@ const ghrepo='https://github.com/interTwin-eu/dcnios'
 const config = {
   title: toolName,
   tagline: 'Data Connector through Apache NiFi for OSCAR',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/dcnios-logo.png', // or whatever your new favicon file is named
 
   // Set the production url of your site here
   url: 'https://intertwin-eu.github.io/',
