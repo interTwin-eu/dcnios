@@ -1,10 +1,11 @@
 # DCNiOS
 
 
-[DCNiOS](https://intertwin-eu.github.io/dcnios) is an open-source command-line tool to easily manage the creation of event-driven data processing flows. DCNiOS, Data Connector through Apache NiFi for OSCAR, facilitates the creation of event-driven processes connecting a Storage System to a scalable OSCAR cluster by employing predefined dataflows that are processed by Apache NiFi like:
+[DCNiOS](https://intertwin-eu.github.io/dcnios), Data Connector through Apache NiFi for OSCAR, is an open-source command-line tool that facilitates the creation of event-driven processes connecting a Storage System to a scalable OSCAR cluster by employing predefined dataflows that are processed by Apache NiFi like:
 - [dCache](http://dcache.org)
 - [Amazon S3](https://aws.amazon.com/s3)
 - [Kafka](https://kafka.apache.org/) as input of an event streaming platform. 
+- [Rucio](https://rucio.cern.ch/)
 
 [Apache NiFi](http://nifi.apache.org) is a reliable system to process and distribute data through powerful and scalable directed graphs of data routing, transformation, and system mediation logic.
 
@@ -14,7 +15,7 @@ The DCNiOS command-line interface allows you to create a NiFi dataflow though a 
 
 After creating a dataflow using DCNiOS, when an event is captured (e.g., Server-sent event by dCache), Apache NiFi stores it in an internal queue and then sends it for processing to an OSCAR cluster at a customized rate. In the OSCAR cluster, a user-defined service creates a job to process the stored data.
 
-![DCNiOS Workflow](docpage/docs/images/OSCAR-dcnios-workflow-drawio.png)
+![DCNiOS Workflow](docpage/docs/images/dcnios-workflow.png)
 
 Therefore, DCNiOS has been made to interact with NiFi and deploy a complete dataflow. It uses HTTP calls to communicate with a Nifi cluster. 
 
@@ -112,7 +113,7 @@ DCNiOS is licensed under the Apache License, Version 2.0. See LICENSE for the fu
 
 ## Acknowledgements
 
-<img src="docpage/docs/images/inter-twin.png" alt="DCNiOS Workflow" width="200">
+<img src="docpage/docs/images/inter-twin.png" alt="interTwin image" width="200">
 
 This work was supported by the project “An interdisciplinary Digital Twin Engine for science’’ (interTwin), which has received funding from the European Union’s Horizon Europe Programme under Grant 101058386.
 
