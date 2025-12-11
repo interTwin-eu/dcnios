@@ -11,3 +11,4 @@ Sources support:
 - [KAFKA](/docs/Sources/Kafka)
 - [S3](/docs/Sources/AWS/S3)
 - [SQS](/docs/Sources/AWS/SQS)
+- [Rucio](/docs/Sources/Rucio)
