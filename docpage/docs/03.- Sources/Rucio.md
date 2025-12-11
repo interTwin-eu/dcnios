@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 # Rucio
 
-Rucio is a Source that listens into a Rucio instance. The following values must be provided:
+Rucio is a Source that listens into a Rucio instance through a RabbitMQ instance. The following values must be provided:
 - An identifier name of the process. It must be unique. Required.
 - RabbitMQ host, port, virtual host, and password for the Rucio messaging broker. Required.
 - Queue name and service_filter to select Rucio events. Required.
